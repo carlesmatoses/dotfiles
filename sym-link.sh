@@ -3,6 +3,13 @@
 # Ensure the config directory exists
 mkdir -p ~/.config
 
+# Hyprland
+ln -sf ~/github/dotfiles/.config/hypr/hyprland.conf ~/.config/hypr/hyprland.conf
+
+# -Wofi style
+ln -sf ~/github/dotfiles/.config/wofi/style.css ~/.config/wofi/style.css
+ln -sf ~/github/dotfiles/.config/wofi/config ~/.config/wofi/config
+
 # Starship
 ln -sf ~/github/dotfiles/.config/starship.toml ~/.config/starship.toml
 

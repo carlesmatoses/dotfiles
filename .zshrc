@@ -103,7 +103,8 @@ alias tmuxconfig="nvim ~/.tmux.conf"
 alias weztermconfig="nvim ~/.config/wezterm/wezterm.lua"
 
 # Start fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
 # Start starship prompt
 eval "$(starship init zsh)"
