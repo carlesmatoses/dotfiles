@@ -33,4 +33,7 @@ ln -sf ~/github/dotfiles/.config/htop/htoprc ~/.config/htop/htoprc
 # Kitty
 ln -sf ~/github/dotfiles/.config/kitty/kitty.conf ~/.config/kitty/kitty.conf
 
+# wlogout
+ln -sf ~/github/dotfiles/.config/wlogout ~/.config/wlogout
+
 echo "All symbolic links created!"

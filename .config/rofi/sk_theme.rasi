@@ -4,6 +4,7 @@
     bg:          #1a1b26;
     hv:          #33467c;
     primary:     #c0caf5;
+    secondary:   #9399b5ff;
     accent:      #414868ff;
     black:       #15161e;
     font: "JetBrainsMono Nerd Font, 16";
@@ -17,8 +18,8 @@ window {
     location: center;
     anchor: center;
     border-color: @accent;
-    border: 1px;
-    border-radius: 3px;
+    border: 3px;
+    border-radius: 8px;
     padding: 6px;
     children: [ mainbox ];
 }
@@ -64,7 +65,7 @@ listview {
 element {
     padding: 4px 12px;
     margin: 4px 0px;
-    color: @hv;
+    color: @secondary;
     font: inherit;
     border-radius: 4px;
     border-color: @hv;
