@@ -1,0 +1,118 @@
+
+// define colors etc.
+* {
+    bg:          #1a1b26;
+    hv:          #33467c;
+    primary:     #c0caf5;
+    accent:      #7aa2f7;
+    black:       #15161e;
+    font: "JetBrainsMono Nerd Font, 16";
+    background-color: @bg;
+}
+
+// defines different aspects of the window
+window {
+    width: 700;
+    orientation: horizontal;
+    location: center;
+    anchor: center;
+    border-color: @primary;
+    border: 1px;
+    border-radius: 3px;
+    padding: 6px;
+    children: [ mainbox ];
+}
+
+mainbox {
+    children: [ inputbar, message, listview ];
+}
+
+inputbar {
+    color: @primary;
+    padding: 11px;
+    border: 0 0 2px 0;
+    border-color: @accent;
+}
+
+message {}
+
+textbox {
+    color: @primary;
+    padding: 10px;
+}
+
+entry, prompt, case-indicator {
+    text-font: inherit;
+    text-color: inherit;
+}
+
+entry {
+    cursor: pointer;
+}
+
+prompt {
+    margin: 0px 5px 0px 0px;
+}
+
+listview {
+    layout: vertical;
+    padding: 8px;
+    lines: 12;
+    columns: 1;
+}
+
+element {
+    padding: 10px 18px;
+    margin: 4px 0px;
+    color: @accent;
+    font: inherit;
+    border-radius: 4px;
+    border-color: @hv;
+}
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+}
+
+element selected.normal {
+    color: @bg;
+    background-color: @hv;
+}
+
+element normal active {
+    background-color: @hv;
+    color: @bg;
+}
+
+element-text, element-icon {
+    background-color: inherit;
+    text-color: inherit;
+    size: 1.2em;
+}
+
+element normal urgent {
+    background-color: #f7768e;
+}
+
+element selected active {
+    background: @hv;
+    foreground: @bg;
+}
+
+button {
+    padding: 6px;
+    color: @primary;
+    border: 2px 0px 2px 2px;
+    border-radius: 4px 0px 0px 4px;
+    border-color: @primary;
+}
+
+button selected normal {
+    border: 2px 0px 2px 2px;
+    border-color: @primary;
+}
+
+scrollbar {
+    enabled: true;
+}

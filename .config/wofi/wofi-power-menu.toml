@@ -1,0 +1,28 @@
+[wofi]
+  path = "/usr/bin/wofi"
+  extra_args = "--allow-markup --columns=2 --hide-scroll"
+
+[menu.shutdown]
+  title = "Apagar"
+
+[menu.reboot]
+  title = "Reiniciar"
+
+[menu.suspend]
+  title = "Suspender"
+  enabled = "false"
+
+[menu.hibernate]
+  title = "Hibernar"
+
+[menu.logout]
+  title = "Salir"
+
+[menu.lock-screen]
+    title = "Bloquear pantalla"
+    requires_confirmation = "false"
+
+[menu.ls]
+  title = "Listar directorio"
+  cmd = "ls -l --color"
+  icon = "L"
