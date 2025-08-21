@@ -4,7 +4,7 @@
     bg:          #1a1b26;
     hv:          #33467c;
     primary:     #c0caf5;
-    accent:      #7aa2f7;
+    accent:      #414868ff;
     black:       #15161e;
     font: "JetBrainsMono Nerd Font, 16";
     background-color: @bg;
@@ -16,7 +16,7 @@ window {
     orientation: horizontal;
     location: center;
     anchor: center;
-    border-color: @primary;
+    border-color: @accent;
     border: 1px;
     border-radius: 3px;
     padding: 6px;
@@ -30,7 +30,7 @@ mainbox {
 inputbar {
     color: @primary;
     padding: 11px;
-    border: 0 0 2px 0;
+    border: 0 0 1px 0;
     border-color: @accent;
 }
 
@@ -62,9 +62,9 @@ listview {
 }
 
 element {
-    padding: 10px 18px;
+    padding: 4px 12px;
     margin: 4px 0px;
-    color: @accent;
+    color: @hv;
     font: inherit;
     border-radius: 4px;
     border-color: @hv;
@@ -76,7 +76,7 @@ element-text {
 }
 
 element selected.normal {
-    color: @bg;
+    color: @primary;
     background-color: @hv;
 }
 
@@ -88,7 +88,7 @@ element normal active {
 element-text, element-icon {
     background-color: inherit;
     text-color: inherit;
-    size: 1.2em;
+    size: 0.9em;
 }
 
 element normal urgent {
