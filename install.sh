@@ -1,57 +1,21 @@
-#!/bin/bash
-# filepath: /srv/dotfiles/install.sh
-
+#!/usr/bin/env bash
 set -e
 
-echo "Starting dotfiles installation..."
+echo "=== Installing modules for Hyprland setup ==="
 
-# Get the directory where this script is located
-DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Update system
+sudo pacman -Syu --noconfirm
 
-# Make scripts executable
-chmod +x "$DOTFILES_DIR/install-zsh.sh"
-chmod +x "$DOTFILES_DIR/install-neovim.sh"
+# 1. Install Kvantum (Qt theming engine)
+echo "-> Installing Kvantum..."
+sudo pacman -S --needed --noconfirm kvantum
 
-# Install Zsh first (since it's the shell)
-echo "=== Installing Zsh ==="
-./install-zsh.sh
+# 2. Install Waybar (status bar for Wayland compositors)
+echo "-> Installing Waybar..."
+sudo pacman -S --needed --noconfirm waybar
 
-# Install Neovim
-echo "=== Installing Neovim ==="
-./install-neovim.sh
+# 3. Install JetBrainsMono Nerd Font
+echo "-> Installing JetBrainsMono Nerd Font..."
+sudo pacman -S --needed --noconfirm ttf-jetbrains-mono-nerd
 
-# Install Kickstart.nvim configuration
-echo "=== Installing Kickstart.nvim configuration ==="
-if [ -d "$HOME/.config/nvim" ]; then
-    echo "Backing up existing nvim config to ~/.config/nvim.backup"
-    mv "$HOME/.config/nvim" "$HOME/.config/nvim.backup"
-fi
-
-echo "Cloning Kickstart.nvim to ~/.config/nvim"
-git clone https://github.com/nvim-lua/kickstart.nvim.git "$HOME/.config/nvim"
-
-
-# Create symlinks for config files
-echo "=== Creating symlinks for config files ==="
-
-# Backup existing files if they exist
-backup_and_link() {
-    local source="$1"
-    local target="$2"
-    
-    if [ -e "$target" ] && [ ! -L "$target" ]; then
-        echo "Backing up existing $target to $target.backup"
-        mv "$target" "$target.backup"
-    fi
-    
-    echo "Creating symlink: $target -> $source"
-    ln -sf "$source" "$target"
-}
-
-# Symlink dotfiles
-backup_and_link "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
-
-
-echo "Dotfiles installation completed!"
-echo "Kickstart.nvim has been installed to ~/.config/nvim"
-echo "Run 'nvim' to start using the new configuration"
+echo "✅ All modules installed successfully!"

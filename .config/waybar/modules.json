@@ -6,9 +6,24 @@
 //
 //
 // by Stephan Raabe (2023)
-// -----------------------------------------------------
-//
+
 {
+    
+    // Network
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": "   {signalStrength}%",
+        "format-ethernet": "  {ipaddr}",
+        "format-disconnected": "Not connected", 
+        "tooltip-format": " {ifname} via {gwaddri}",
+        "tooltip-format-wifi": "   {essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50,
+        "on-click": "rofi -modi 'Network:~/.config/rofi/scripts/network.sh' -show Network",
+        "on-click-right": "nm-connection-editor"
+    },
+
     // Workspaces
     "hyprland/workspaces" : {
         "on-click": "activate",
@@ -267,14 +282,14 @@
     "network": {
         "format": "{ifname}",
         "format-wifi": "   {signalStrength}%",
-        "format-ethernet": "  {ipaddr}",
+        "format-ethernet": "  {ipaddr}",
         "format-disconnected": "Not connected", //An empty format will hide the module.
         "tooltip-format": " {ifname} via {gwaddri}",
         "tooltip-format-wifi": "   {essid} ({signalStrength}%)",
         "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})",
         "tooltip-format-disconnected": "Disconnected",
         "max-length": 50,
-        "on-click": "alacritty -e nmtui"
+        "on-click": "kitty  -e nmtui"
     },
 
     // Battery
@@ -285,7 +300,7 @@
             "critical": 15
         },
         "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
+        "format-charging": "⚡ {capacity}%",
         "format-plugged": " {capacity}%",
         "format-alt": "{icon} {time}",
         // "format-good": "", // An empty format will hide the module
@@ -320,6 +335,7 @@
         "format-off": "",
         "interval": 30,
         "on-click": "blueman-manager",
+        "on-click-right": "blueman-manager",
         "format-no-controller": ""
     },
 
@@ -327,7 +343,7 @@
     "user": {
         "format": "{user}",
         "interval": 60,
-        "icon": false,
+        "icon": false
     },
 
     // Idle Inhibator

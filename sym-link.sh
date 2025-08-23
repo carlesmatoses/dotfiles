@@ -4,13 +4,16 @@
 mkdir -p ~/.config
 
 # Hyprland
-ln -sf ~/github/dotfiles/.config/hypr/hyprland.conf ~/.config/hypr/hyprland.conf
+ln -sf ~/github/dotfiles/.config/hypr ~/.config/hypr
 
 # Waybar
 ln -sf ~/github/dotfiles/.config/waybar/config ~/.config/waybar/config
 ln -sf ~/github/dotfiles/.config/waybar/style.css ~/.config/waybar/style.css
 ln -sf ~/github/dotfiles/.config/waybar/catppuccin.yaml ~/.config/waybar/catppuccin.yaml
 ln -sf ~/github/dotfiles/.config/waybar/editorconfig ~/.config/waybar/editorconfig
+
+# Kdeglobals
+ln -sf ~/github/dotfiles/.config/kdeglobals/kdeglobals ~/.config/kdeglobals
 
 # -Wofi style
 ln -sf ~/github/dotfiles/.config/wofi/style.css ~/.config/wofi/style.css
