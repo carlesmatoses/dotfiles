@@ -4,6 +4,7 @@
 # Usage: rofi -modi 'Config:~/.config/rofi/scripts/config.sh' -show Config
 
 if [ -z "$@" ]; then
+    echo " Dotfiles"
     echo "󰒓 Hyprland Config"
     echo "󰒓 Hyprland Binds Config"
     echo "󰈙 Waybar Config"
@@ -13,6 +14,9 @@ if [ -z "$@" ]; then
     echo "󰕮 Starship Config"
 else
     case "$@" in
+        " Dotfiles")
+            code ~/github/dotfiles
+            ;;
         "󰒓 Hyprland Config")
             kitty nvim ~/.config/hypr/hyprland.conf
             ;;

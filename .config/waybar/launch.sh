@@ -5,7 +5,7 @@ sleep 0.2
 
 if [[ $USER = "carles" ]]
 then
-	waybar -c ~/github/dotfiles/.config/waybar/config & -s ~/github/dotfiles/.config/waybar/style.css
+	waybar -c ~/.config/waybar/config & -s ~/.config/waybar/style.css
 else
 	waybar &
 fi

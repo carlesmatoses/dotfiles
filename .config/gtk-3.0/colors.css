@@ -1,0 +1,45 @@
+/*
+* Catppuccin Mocha Colors for GTK
+* Based on Catppuccin Mocha palette
+*/
+
+/* Catppuccin Mocha Base Colors */
+@define-color base00 #1e1e2e; /* base */
+@define-color base01 #181825; /* mantle */
+@define-color base02 #313244; /* surface0 */
+@define-color base03 #45475a; /* surface1 */
+@define-color base04 #585b70; /* surface2 */
+@define-color base05 #cdd6f4; /* text */
+@define-color base06 #f5e0dc; /* rosewater */
+@define-color base07 #b4befe; /* lavender */
+
+/* Catppuccin Mocha Accent Colors */
+@define-color accent_color #cba6f7; /* mauve */
+@define-color accent_fg_color #1e1e2e; /* base for contrast */
+@define-color accent_bg_color #cba6f7; /* mauve */
+
+/* Window Colors */
+@define-color window_bg_color #1e1e2e; /* base */
+@define-color window_fg_color #cdd6f4; /* text */
+
+/* Header Bar */
+@define-color headerbar_bg_color #181825; /* mantle */
+@define-color headerbar_fg_color #cdd6f4; /* text */
+
+/* Popover */
+@define-color popover_bg_color #313244; /* surface0 */
+@define-color popover_fg_color #cdd6f4; /* text */
+
+/* Views */
+@define-color view_bg_color #1e1e2e; /* base */
+@define-color view_fg_color #cdd6f4; /* text */
+
+/* Cards */
+@define-color card_bg_color #313244; /* surface0 */
+@define-color card_fg_color #cdd6f4; /* text */
+
+/* Sidebar */
+@define-color sidebar_bg_color @window_bg_color;
+@define-color sidebar_fg_color @window_fg_color;
+@define-color sidebar_border_color @window_bg_color;
+@define-color sidebar_backdrop_color @window_bg_color;

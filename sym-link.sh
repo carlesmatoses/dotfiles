@@ -7,13 +7,21 @@ mkdir -p ~/.config
 ln -sf ~/github/dotfiles/.config/hypr ~/.config/hypr
 
 # Waybar
-ln -sf ~/github/dotfiles/.config/waybar/config ~/.config/waybar/config
-ln -sf ~/github/dotfiles/.config/waybar/style.css ~/.config/waybar/style.css
-ln -sf ~/github/dotfiles/.config/waybar/catppuccin.yaml ~/.config/waybar/catppuccin.yaml
-ln -sf ~/github/dotfiles/.config/waybar/editorconfig ~/.config/waybar/editorconfig
+ln -sf ~/github/dotfiles/.config/waybar ~/.config/waybar
 
 # Kdeglobals
 ln -sf ~/github/dotfiles/.config/kdeglobals/kdeglobals ~/.config/kdeglobals
+
+# GTK
+ln -sf ~/github/dotfiles/.config/gtk-3.0 ~/.config/gtk-3.0
+ln -sf ~/github/dotfiles/.config/gtk-4.0 ~/.config/gtk-4.0
+
+# QT ct
+ln -sf ~/github/dotfiles/.config/qt6ct ~/.config/qt6ct
+ln -sf ~/github/dotfiles/.config/qt5ct ~/.config/qt5ct
+
+# Kvantum
+ln -sf ~/github/dotfiles/.config/Kvantum ~/.config/Kvantum
 
 # -Wofi style
 ln -sf ~/github/dotfiles/.config/wofi/style.css ~/.config/wofi/style.css
