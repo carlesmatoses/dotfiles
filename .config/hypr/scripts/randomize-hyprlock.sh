@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 WALLPAPER_DIR="$HOME/.config/hypr/wallpapers/"
+HYPRLOCK_CONFIG="$HOME/.config/hypr/hyprlock.conf"
 
 # Get all supported wallpaper files (jpg, jpeg, png, webp)
 WALLPAPERS=($(find "$WALLPAPER_DIR" -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.webp" \)))
@@ -13,13 +14,10 @@ fi
 # Get a random wallpaper
 WALLPAPER="${WALLPAPERS[RANDOM % ${#WALLPAPERS[@]}]}"
 
-echo "Setting wallpaper: $(basename "$WALLPAPER")"
+echo "Setting hyprlock background: $(basename "$WALLPAPER")"
 
-# Preload and set the wallpaper
-hyprctl hyprpaper preload "$WALLPAPER"
-hyprctl hyprpaper wallpaper ",$WALLPAPER"
-
-# Also update hyprlock background
-HYPRLOCK_CONFIG="$HOME/.config/hypr/hyprlock.conf"
+# Update only the background wallpaper path (not the profile picture)
+# This targets the path line that's inside the background section
 sed -i '/^background {/,/^}/ s|^    path = .*|    path = '"$WALLPAPER"'|' "$HYPRLOCK_CONFIG"
-echo "Hyprlock background also updated to match!"
+
+echo "Hyprlock background updated successfully!"
