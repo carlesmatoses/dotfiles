@@ -22,7 +22,7 @@ ln -sf ~/github/dotfiles/.config/wofi/wofi-power-menu.toml ~/.config/wofi/wofi-p
 ln -sf ~/github/dotfiles/.config/wofi/wofi-power-menu.toml ~/.config/wofi-power-menu.toml
 
 # Rofi
-ln -sf ~/github/dotfiles/.config/rofi/config.rasi ~/.config/rofi/config.rasi
+ln -sf ~/github/dotfiles/.config/rofi ~/.config/rofi
 
 # Starship
 ln -sf ~/github/dotfiles/.config/starship.toml ~/.config/starship.toml
