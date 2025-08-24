@@ -447,13 +447,13 @@ label:focus {
     background-color: #000000;
 }
 
-#backlight {
+/* #backlight {
     background-color: #90b1b1;
-}
+} */
 
-#network {
+/* #network {
     background-color: #2980b9;
-}
+} */
 
 #network.disconnected {
     background-color: #f53c3c;

@@ -7,14 +7,9 @@
 #           |___/                             |___/
 #
 # -----------------------------------------------------
-# Get keybindings location based on variation
-# -----------------------------------------------------
-config_file=$(<~/.config/hypr/conf/keybinding.conf)
-config_file=${config_file//source = ~//home/$USER}
-
-# -----------------------------------------------------
 # Path to keybindings config file
 # -----------------------------------------------------
+config_file="$HOME/.config/hypr/configs/keybindings.conf"
 echo "Reading from: $config_file"
 
 keybinds=$(awk -F'[=#]' '
@@ -35,4 +30,4 @@ keybinds=$(awk -F'[=#]' '
 ' "$config_file")
 
 sleep 0.2
-rofi -dmenu -i -markup -eh 2 -replace -p "Keybinds" -config ~/.config/rofi/config-compact.rasi <<<"$keybinds"
+rofi -dmenu -i -markup -eh 2 -replace -p "Keybinds" <<<"$keybinds"

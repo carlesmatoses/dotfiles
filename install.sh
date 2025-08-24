@@ -18,4 +18,24 @@ sudo pacman -S --needed --noconfirm waybar
 echo "-> Installing JetBrainsMono Nerd Font..."
 sudo pacman -S --needed --noconfirm ttf-jetbrains-mono-nerd
 
+# 4. Install qt5ct and qt6ct (Qt configuration tools)s
+echo "-> Installing qt5ct and qt6ct..."
+sudo pacman -S --needed --noconfirm qt5ct qt6ct
+
+# 5. Install Zsh
+echo "-> Installing Zsh..."
+sudo pacman -S --needed --noconfirm zsh
+
+# 6. Install Oh My Zsh
+echo "-> Installing Oh My Zsh..."
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    RUNZSH=no CHSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+else
+    echo "Oh My Zsh already installed."
+fi
+
+# 7. Install Starship prompt
+echo "-> Installing Starship..."
+sudo pacman -S --needed --noconfirm starship
+
 echo "✅ All modules installed successfully!"
