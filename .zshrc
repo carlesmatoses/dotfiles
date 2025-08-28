@@ -101,7 +101,7 @@ alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="cd ~/.oh-my-zsh"
 alias tmuxconfig="nvim ~/.tmux.conf"
 alias weztermconfig="nvim ~/.config/wezterm/wezterm.lua"
-
+alias dockerps="docker ps --no-trunc | less -S"
 # Start fzf
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source <(fzf --zsh)
