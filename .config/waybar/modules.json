@@ -23,7 +23,7 @@
         "on-click": "activate",
         "on-click-middle": "close",
         "ignore-list": [
-           "Alacritty"
+           "kitty"
         ],
         "app_ids-mapping": {
             "firefoxdeveloperedition": "firefox-developer-edition"
@@ -73,7 +73,7 @@
         "return-type": "json",
         "exec": "~/.config/ml4w/scripts/updates.sh",
         "restart-interval": 60,
-        "on-click": "alacritty -e ~/.config/ml4w/scripts/installupdates.sh",
+        "on-click": "kitty -e ~/.config/ml4w/scripts/installupdates.sh",
         "tooltip": false
     },
 
@@ -211,13 +211,13 @@
     // CPU
     "cpu": {
         "format": "/ C {usage}% ",
-        "on-click": "alacritty -e htop"
+        "on-click": "kitty -e htop"
     },
 
     // Memory
     "memory": {
         "format": "/ M {}% ",
-        "on-click": "alacritty -e htop"
+        "on-click": "kitty -e htop"
     },
 
     // Harddisc space used
@@ -225,7 +225,7 @@
         "interval": 30,
         "format": "D {percentage_used}% ",
         "path": "/",
-        "on-click": "alacritty -e htop"
+        "on-click": "kitty -e htop"
     },
 
     "hyprland/language": {
