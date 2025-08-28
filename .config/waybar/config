@@ -23,7 +23,7 @@
     "modules-left": [
         "custom/appmenu",
         "custom/settings",
-        "hyprland/window",
+        // "hyprland/window",
         "wlr/taskbar",
         "tray"
 
