@@ -38,4 +38,8 @@ fi
 echo "-> Installing Starship..."
 sudo pacman -S --needed --noconfirm starship
 
+# 8. Install PDF reader
+sudo pacman -S --needed --noconfirm sioyek
+
+
 echo "✅ All modules installed successfully!"
