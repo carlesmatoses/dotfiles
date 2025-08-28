@@ -41,5 +41,7 @@ sudo pacman -S --needed --noconfirm starship
 # 8. Install PDF reader
 sudo pacman -S --needed --noconfirm sioyek
 
+# 9. App editor
+sudo pacman -S --needed --noconfirm menulibre
 
 echo "✅ All modules installed successfully!"

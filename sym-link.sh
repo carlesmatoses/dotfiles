@@ -47,4 +47,7 @@ ln -sf ~/github/dotfiles/.config/kitty/kitty.conf ~/.config/kitty/kitty.conf
 # wlogout
 ln -sf ~/github/dotfiles/.config/wlogout ~/.config/wlogout
 
+# Custom apps
+ln -sf ~/github/dotfiles/.config/applications ~/.local/share/applications
+
 echo "All symbolic links created!"
