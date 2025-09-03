@@ -1,2 +1,6 @@
 .config/hypr/wallpapers/*.jpg
 .config/hypr/wallpapers/*.png
+.config/hypr/wallpapers/*.gif
+.config/hypr/wallpapers/*.jpeg
+.config/hypr/wallpapers/*.webp
+.config/hypr/wallpapers/*.svg
