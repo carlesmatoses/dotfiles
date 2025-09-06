@@ -23,3 +23,11 @@ hyprctl hyprpaper wallpaper ",$WALLPAPER"
 HYPRLOCK_CONFIG="$HOME/.config/hypr/hyprlock.conf"
 sed -i '/^background {/,/^}/ s|^    path = .*|    path = '"$WALLPAPER"'|' "$HYPRLOCK_CONFIG"
 echo "Hyprlock background also updated to match!"
+
+# set colors with pywal
+wal -i "$WALLPAPER" -n
+
+# restart waybar
+pkill waybar
+waybar &
+echo "Waybar restarted to apply new colors!"
