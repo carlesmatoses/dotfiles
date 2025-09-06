@@ -1,12 +1,15 @@
 
-// define colors etc.
+// Import wal colors
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+// Map wal colors to your theme variables using correct wal variable names
 * {
-    bg:          #1a1b26;
-    hv:          #33467c;
-    primary:     #c0caf5;
-    secondary:   #9399b5ff;
-    accent:      #414868ff;
-    black:       #15161e;
+    bg:          @background;
+    hv:          @selected-normal-background;
+    primary:     @foreground;
+    secondary:   @normal-foreground;
+    accent:      @selected-normal-background;
+    black:       @background;
     font: "JetBrainsMono Nerd Font, 16";
     background-color: @bg;
 }
