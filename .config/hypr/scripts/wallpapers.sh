@@ -3,7 +3,7 @@
 WALLPAPER_DIR="$HOME/.config/hypr/wallpapers/"
 
 # Get all supported wallpaper files (jpg, jpeg, png, webp)
-WALLPAPERS=($(find "$WALLPAPER_DIR" -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.webp" \)))
+WALLPAPERS=($(find "$WALLPAPER_DIR" -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.webp" -o -name "*.gif" \)))
 
 if [ ${#WALLPAPERS[@]} -eq 0 ]; then
     echo "No supported wallpaper files found!"
