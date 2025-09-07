@@ -6,6 +6,19 @@ echo "=== Installing modules for Hyprland setup ==="
 # Update system
 sudo pacman -Syu --noconfirm
 
+# Install Paru (AUR helper)w
+if ! command -v paru &> /dev/null; then
+    echo "-> Installing Paru (AUR helper)..."
+    sudo pacman -S --needed --noconfirm base-devel git
+    git clone https://aur.archlinux.org/paru.git /tmp/paru
+    cd /tmp/paru
+    makepkg -si --noconfirm
+    cd -
+    rm -rf /tmp/paru
+else
+    echo "Paru is already installed."
+fi
+
 # 1. Install Kvantum (Qt theming engine)
 echo "-> Installing Kvantum..."
 sudo pacman -S --needed --noconfirm kvantum
@@ -71,6 +84,25 @@ sudo pacman -S --needed --noconfirm sioyek
 echo "-> Installing Rofi..."
 sudo pacman -S --needed --noconfirm rofi
 
+# 9.5. Install clipboard utilities
+echo "-> Installing clipboard utilities..."
+sudo pacman -S --needed --noconfirm wl-clipboard
+
+# Install paru (AUR helper) if not already installed
+if ! command -v paru &> /dev/null; then
+    echo "-> Installing paru (AUR helper)..."
+    sudo pacman -S --needed --noconfirm git base-devel
+    cd /tmp
+    git clone https://aur.archlinux.org/paru.git
+    cd paru
+    makepkg -si --noconfirm
+    cd /home/carles/github/dotfiles
+fi
+
+# Install clipse (clipboard manager)
+echo "-> Installing clipse (clipboard manager)..."
+paru -S --needed --noconfirm clipse
+
 # 10. Install NetworkManager (network controller)
 echo "-> Installing NetworkManager..."
 sudo pacman -S --needed --noconfirm networkmanager networkmanager-applet
@@ -131,18 +163,7 @@ sudo pacman -S --needed --noconfirm pavucontrol
 echo "-> Installing Hyprpaper..."
 sudo pacman -S --needed --noconfirm hyprpaper
 
-# 18. Install Paru (AUR helper)
-if ! command -v paru &> /dev/null; then
-    echo "-> Installing Paru (AUR helper)..."
-    sudo pacman -S --needed --noconfirm base-devel git
-    git clone https://aur.archlinux.org/paru.git /tmp/paru
-    cd /tmp/paru
-    makepkg -si --noconfirm
-    cd -
-    rm -rf /tmp/paru
-else
-    echo "Paru is already installed."
-fi
+
 
 # 19. Install python-pywal (color scheme generator)
 echo "-> Installing python-pywal..."
