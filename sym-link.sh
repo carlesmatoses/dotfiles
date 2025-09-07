@@ -50,4 +50,12 @@ ln -sf ~/github/dotfiles/.config/wlogout ~/.config/wlogout
 # wal 
 ln -sf ~/github/dotfiles/.config/wal/templates/hyprland.conf ~/.config/wal/templates/hyprland.conf
 
+# Custom Applications
+mkdir -p ~/.local/share/applications
+ln -sf ~/github/dotfiles/.config/applications/7z-2.desktop ~/.local/share/applications/7z-2.desktop
+ln -sf ~/github/dotfiles/.config/applications/7z.desktop ~/.local/share/applications/7z.desktop
+ln -sf ~/github/dotfiles/.config/applications/calendar.desktop ~/.local/share/applications/calendar.desktop
+ln -sf ~/github/dotfiles/.config/applications/gmail.desktop ~/.local/share/applications/gmail.desktop
+ln -sf ~/github/dotfiles/.config/applications/revolut.desktop ~/.local/share/applications/revolut.desktop
+
 echo "All symbolic links created!"

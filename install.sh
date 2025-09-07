@@ -35,6 +35,10 @@ sudo pacman -S --needed --noconfirm ttf-jetbrains-mono-nerd
 echo "-> Installing qt5ct and qt6ct..."
 sudo pacman -S --needed --noconfirm qt5ct qt6ct
 
+# 4.1. Install Qt Wayland support
+echo "-> Installing Qt Wayland support..."
+sudo pacman -S --needed --noconfirm qt5-wayland qt6-wayland
+
 # 5. Install Zsh
 echo "-> Installing Zsh..."
 sudo pacman -S --needed --noconfirm zsh
@@ -78,7 +82,7 @@ echo "-> Installing Starship..."
 sudo pacman -S --needed --noconfirm starship
 
 # 8. Install PDF reader
-sudo pacman -S --needed --noconfirm sioyek
+paru -S --needed --noconfirm sioyek
 
 # 9. Install Rofi (application launcher/window switcher)
 echo "-> Installing Rofi..."
@@ -172,5 +176,25 @@ paru -S --needed --noconfirm python-pywal
 # 20. Install clipse (clipboard manager)
 echo "-> Installing clipse..."
 paru -S --needed --noconfirm clipse
+
+# 21. Install OpenSSH
+echo "-> Installing OpenSSH..."
+paru -S --needed --noconfirm openssh
+
+# 22. Install Dolphin (file manager)
+echo "-> Installing Dolphin..."
+sudo pacman -S --needed --noconfirm dolphin
+
+# 23. Install htop (process viewer)
+echo "-> Installing htop..."
+sudo pacman -S --needed --noconfirm htop
+
+# 24. Install nvtop (GPU process viewer for NVIDIA/AMD/Intel)
+echo "-> Installing nvtop (GPU process viewer)..."
+sudo pacman -S --needed --noconfirm nvtop
+
+# 25. Install Neofetch (system information tool)
+echo "-> Installing Neofetch..."
+paru -S --needed --noconfirm neofetch
 
 echo "✅ All modules installed successfully!"
