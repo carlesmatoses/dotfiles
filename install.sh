@@ -148,4 +148,8 @@ fi
 echo "-> Installing python-pywal..."
 paru -S --needed --noconfirm python-pywal
 
+# 20. Install clipse (clipboard manager)
+echo "-> Installing clipse..."
+paru -S --needed --noconfirm clipse
+
 echo "✅ All modules installed successfully!"

@@ -48,6 +48,6 @@ ln -sf ~/github/dotfiles/.config/kitty/kitty.conf ~/.config/kitty/kitty.conf
 ln -sf ~/github/dotfiles/.config/wlogout ~/.config/wlogout
 
 # wal 
-ln -sf ~/github/dotfiles/.config/wal ~/.config/wal
+ln -sf ~/github/dotfiles/.config/wal/templates/hyprland.conf ~/.config/wal/templates/hyprland.conf
 
 echo "All symbolic links created!"
