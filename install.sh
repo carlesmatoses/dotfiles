@@ -197,4 +197,8 @@ sudo pacman -S --needed --noconfirm nvtop
 echo "-> Installing Neofetch..."
 paru -S --needed --noconfirm neofetch
 
+# 26. Install rofi-emoji (emoji picker for Rofi)
+echo "-> Installing rofi-emoji..."
+paru -S --needed --noconfirm rofi-emoji
+
 echo "✅ All modules installed successfully!"

@@ -102,6 +102,10 @@ alias ohmyzsh="cd ~/.oh-my-zsh"
 alias tmuxconfig="nvim ~/.tmux.conf"
 alias weztermconfig="nvim ~/.config/wezterm/wezterm.lua"
 alias dockerps="docker ps --no-trunc | less -S"
+alias around="cd ~/github/around"
+around_start() {
+  (cd ~/github/around && docker compose up -d)
+}
 # Start fzf
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source <(fzf --zsh)

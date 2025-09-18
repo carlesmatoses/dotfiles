@@ -3,7 +3,7 @@
 WALLPAPER_DIR="$HOME/.config/hypr/wallpapers/"
 
 # Get all supported wallpaper files (jpg, jpeg, png, webp)
-WALLPAPERS=($(find "$WALLPAPER_DIR" -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.webp" -o -name "*.gif" \)))
+WALLPAPERS=($(find "$WALLPAPER_DIR" -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.webp" \)))
 
 if [ ${#WALLPAPERS[@]} -eq 0 ]; then
     echo "No supported wallpaper files found!"
@@ -11,7 +11,7 @@ if [ ${#WALLPAPERS[@]} -eq 0 ]; then
 fi
 
 # Get a random wallpaper
-WALLPAPER="${WALLPAPERS[RANDOM % ${#WALLPAPERS[@]}]}"
+WALLPAPER="$(printf "%s\n" "${WALLPAPERS[@]}" | shuf -n1)"
 
 echo "Setting wallpaper: $(basename "$WALLPAPER")"
 
