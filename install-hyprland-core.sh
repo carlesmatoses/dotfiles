@@ -19,4 +19,8 @@ sudo pacman -S --needed --noconfirm rofi
 echo "-> Installing Hyprpaper..."
 sudo pacman -S --needed --noconfirm hyprpaper
 
+# 5. Install Hyprlock (screen locker for Hyprland)
+echo "-> Installing Hyprlock..."
+sudo pacman -S --needed --noconfirm hyprlock
+
 echo "✅ Hyprland core components installed successfully!"
