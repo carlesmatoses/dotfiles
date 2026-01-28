@@ -19,13 +19,16 @@ chmod +x setup.sh
 ### Installation Scripts (Modular)
 - **`install.sh`** - System setup and Paru installation
 - **`install-hyprland-core.sh`** - Hyprland, Waybar, Rofi, Hyprpaper
+- **`install-wlogout.sh`** - wlogout (Wayland logout dialog)
 - **`install-qt-theming.sh`** - Kvantum, Qt5/Qt6 tools and Wayland support
 - **`install-fonts.sh`** - JetBrains Mono Nerd Font
 - **`install-audio.sh`** - PipeWire audio system (with conflict handling)
 - **`install-networking.sh`** - NetworkManager and clipboard utilities
 - **`install-zsh.sh`** - Zsh shell and Oh My Zsh configuration
+- **`install-starship.sh`** - Starship prompt for terminal styling
 - **`install-neovim.sh`** - Neovim editor
 - **`install-utilities.sh`** - System utilities (htop, nvtop, neofetch, rofi-emoji, clipse, pavucontrol)
+- **`install-fzf.sh`** - fzf (Fuzzy Finder) command-line tool
 - **`install-extras.sh`** - Extra applications (Sioyek PDF reader, OpenSSH)
 - **`install-gpu-drivers.sh`** - GPU driver detection and installation (NVIDIA)
 - **`install-pywal.sh`** - Pywal color scheme generator
@@ -84,13 +87,16 @@ If you prefer to install components individually, you can run each script separa
 ```bash
 ./install.sh                    # System setup and Paru
 ./install-hyprland-core.sh      # Hyprland compositor
+./install-wlogout.sh            # wlogout logout dialog
 ./install-qt-theming.sh         # Qt theming
 ./install-fonts.sh              # Fonts
 ./install-audio.sh              # PipeWire audio
 ./install-networking.sh         # NetworkManager
 ./install-zsh.sh                # Zsh setup
+./install-starship.sh           # Starship prompt
 ./install-neovim.sh             # Neovim
 ./install-utilities.sh          # System utilities
+./install-fzf.sh                # fzf (Fuzzy Finder)
 ./install-extras.sh             # Extra applications
 ./install-gpu-drivers.sh        # GPU drivers
 ./install-pywal.sh              # Pywal
@@ -136,13 +142,16 @@ dotfiles/
 ├── setup.sh                        # Main orchestrator
 ├── install.sh                      # System setup & Paru
 ├── install-hyprland-core.sh        # Hyprland, Waybar, Rofi, Hyprpaper
+├── install-wlogout.sh              # wlogout logout dialog
 ├── install-qt-theming.sh           # Qt theming
 ├── install-fonts.sh                # Fonts
 ├── install-audio.sh                # PipeWire audio
 ├── install-networking.sh           # NetworkManager
 ├── install-zsh.sh                  # Zsh setup
+├── install-starship.sh             # Starship prompt
 ├── install-neovim.sh               # Neovim setup
 ├── install-utilities.sh            # System utilities
+├── install-fzf.sh                  # fzf (Fuzzy Finder)
 ├── install-extras.sh               # Extra applications
 ├── install-gpu-drivers.sh          # GPU drivers
 ├── install-pywal.sh                # Pywal setup

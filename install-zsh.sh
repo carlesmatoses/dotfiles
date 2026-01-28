@@ -3,7 +3,7 @@
 
 set -e
 
-echo "Installing Zsh..."
+echo "=== Installing Zsh ==="
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     # Linux
@@ -49,18 +49,62 @@ else
 fi
 
 # Install Oh My Zsh (optional but recommended)
+echo "-> Installing Oh My Zsh..."
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
-    echo "Installing Oh My Zsh..."
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    RUNZSH=no CHSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    echo "ℹ️  Oh My Zsh installed."
+else
+    echo "ℹ️  Oh My Zsh already installed."
+fi
+
+# Install Oh My Zsh plugins
+echo "-> Installing Oh My Zsh plugins..."
+mkdir -p "$HOME/.oh-my-zsh/custom/plugins"
+
+# Clone zsh-autosuggestions
+if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then
+    git clone https://github.com/zsh-users/zsh-autosuggestions "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+    echo "ℹ️  zsh-autosuggestions installed."
+else
+    echo "ℹ️  zsh-autosuggestions already installed."
+fi
+
+# Clone zsh-syntax-highlighting
+if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+    echo "ℹ️  zsh-syntax-highlighting installed."
+else
+    echo "ℹ️  zsh-syntax-highlighting already installed."
+fi
+
+# Clone zsh-completions
+if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-completions" ]; then
+    git clone https://github.com/zsh-users/zsh-completions "$HOME/.oh-my-zsh/custom/plugins/zsh-completions"
+    echo "ℹ️  zsh-completions installed."
+else
+    echo "ℹ️  zsh-completions already installed."
 fi
 
 # Change default shell to zsh
-if [ "$SHELL" != "$(which zsh)" ]; then
-    echo "Changing default shell to zsh..."
-    chsh -s "$(which zsh)"
-    echo "Please log out and log back in for the shell change to take effect"
+echo "-> Setting Zsh as default shell..."
+ZSH_PATH=$(which zsh)
+
+if [ -z "$ZSH_PATH" ]; then
+    echo "✗ Error: Zsh not found in PATH"
+    exit 1
 fi
 
-echo "Zsh installation completed!"
-echo "Current shell: $SHELL"
-echo "Zsh location: $(which zsh)"
+if [ "$SHELL" != "$ZSH_PATH" ]; then
+    echo "Changing default shell from $SHELL to $ZSH_PATH..."
+    chsh -s "$ZSH_PATH" || sudo chsh -s "$ZSH_PATH" $USER
+    echo "✅ Default shell changed to Zsh"
+    echo ""
+    echo "⚠️  IMPORTANT: You need to restart your terminal or log out and back in for changes to take effect."
+else
+    echo "ℹ️  Zsh is already your default shell."
+fi
+
+echo ""
+echo "✅ Zsh installation completed!"
+echo "   Current shell: $SHELL"
+echo "   Zsh location: $ZSH_PATH"

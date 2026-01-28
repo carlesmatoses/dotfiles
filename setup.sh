@@ -51,12 +51,15 @@ print_section "STEP 1: Installing Packages"
 scripts_to_run=(
     "install.sh"
     "install-hyprland-core.sh"
+    "install-wlogout.sh"
     "install-qt-theming.sh"
     "install-fonts.sh"
     "install-audio.sh"
     "install-networking.sh"
     "install-zsh.sh"
+    "install-starship.sh"
     "install-neovim.sh"
+    "install-fzf.sh"
     "install-utilities.sh"
     "install-extras.sh"
     "install-gpu-drivers.sh"
@@ -83,8 +86,8 @@ fi
 # Step 3: Execute wallpapers script if it exists
 print_section "STEP 3: Setting Up Wallpapers"
 
-if [ -f "$SCRIPT_DIR/wallpapers.sh" ]; then
-    run_script "wallpapers.sh"
+if [ -f "$SCRIPT_DIR/.config/hypr/scripts/wallpapers.sh" ]; then
+    run_script ".config/hypr/scripts/wallpapers.sh"
 else
     echo -e "${YELLOW}⚠ wallpapers.sh not found (skipping)${NC}"
 fi
@@ -108,10 +111,13 @@ echo ""
 echo "Summary of changes:"
 echo "  • Installed system packages and utilities"
 echo "  • Installed Zsh and plugins"
+echo "  • Installed Starship prompt"
 echo "  • Installed Neovim"
+echo "  • Installed fzf (Fuzzy Finder)"
 echo "  • Installed Pywal"
 echo "  • Installed Zen Browser"
 echo "  • Installed VS Code (Microsoft Official)"
+echo "  • Installed fzf (Fuzzy Finder)"
 echo "  • Created configuration symlinks"
 echo "  • Applied wallpapers"
 echo "  • Reloaded Hyprland"
