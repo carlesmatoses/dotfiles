@@ -55,10 +55,10 @@ ln -sf ~/github/dotfiles/.config/starship.toml ~/.config/starship.toml
 rm -f ~/.zshrc
 ln -sf ~/github/dotfiles/.zshrc ~/.zshrc
 
-# Htop
-mkdir -p ~/.config/htop
-rm -f ~/.config/htop/htoprc
-ln -sf ~/github/dotfiles/.config/htop/htoprc ~/.config/htop/htoprc
+# Btop
+mkdir -p ~/.config/btop
+rm -f ~/.config/btop/btoprc
+ln -sf ~/github/dotfiles/.config/btop/btoprc ~/.config/btop/btoprc
 
 # Kitty
 mkdir -p ~/.config/kitty

@@ -3,9 +3,9 @@ set -e
 
 echo "=== Installing System Utilities ==="
 
-# 1. Install htop (process viewer)
-echo "-> Installing htop..."
-sudo pacman -S --needed --noconfirm htop
+# 1. Install btop (process viewer)
+echo "-> Installing btop..."
+sudo pacman -S --needed --noconfirm btop
 
 # 2. Install nvtop (GPU process viewer for NVIDIA/AMD/Intel)
 echo "-> Installing nvtop (GPU process viewer)..."
