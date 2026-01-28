@@ -2,16 +2,18 @@
     // Workspaces
     "hyprland/workspaces" : {
         "on-click": "activate",
-        "active-only": false,
-        "all-outputs": true,
-        "format": "{}",
+        "active-only": true,
+        "all-outputs": false,
+        "separate-outputs": true,
+        "format": "{id}",
         "format-icons": {
 			"urgent": "",
 			"active": "",
 			"default": ""
         },
         "persistent-workspaces": {
-             "*": 5
+             "*": [1,2,3,4,5],
+             "HDMI-A-1": [6,7,8,9,10]
         }
     },
 
@@ -211,13 +213,13 @@
     // CPU
     "cpu": {
         "format": "/ C {usage}% ",
-        "on-click": "kitty -e htop"
+        "on-click": "kitty -e btop"
     },
 
     // Memory
     "memory": {
         "format": "/ M {}% ",
-        "on-click": "kitty -e htop"
+        "on-click": "kitty -e btop"
     },
 
     // Harddisc space used
@@ -225,7 +227,7 @@
         "interval": 30,
         "format": "D {percentage_used}% ",
         "path": "/",
-        "on-click": "kitty -e htop"
+        "on-click": "kitty -e btop"
     },
 
     "hyprland/language": {
