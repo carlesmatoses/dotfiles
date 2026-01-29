@@ -1,0 +1,1 @@
+/home/carles/github/dotfiles/.config/blender/5.0/scripts/startup/bl_app_templates_user/test/startup.blend
