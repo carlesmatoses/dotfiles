@@ -7,7 +7,7 @@ DEVICE=$(cat /etc/hostname)
 
 # Define monitors for each device
 declare -A DEVICE_MONITORS
-DEVICE_MONITORS["carles-pc"]="DVI-D-2 HDMI-A-1"
+DEVICE_MONITORS["carles-pc"]="DP-1 HDMI-A-1"
 DEVICE_MONITORS["carles-lpt"]=""  # Add your laptop monitors here
 
 # Get monitors for current device
