@@ -14,30 +14,38 @@ chmod +x setup.sh
 ## Scripts Overview
 
 ### Main Orchestrator
-- **`setup.sh`** - Main orchestrator that runs all installation scripts in the correct order, creates symlinks, and reloads Hyprland
+- **`setup.sh`** - Main orchestrator that runs all installation scripts in the correct order and reloads Hyprland
 
 ### Installation Scripts (Modular)
+Each script installs its package(s) **and** links its own configuration from this repo — there's no separate symlink step.
+
 - **`install.sh`** - System setup and Paru installation
-- **`install-hyprland-core.sh`** - Hyprland, Waybar, Rofi, Hyprpaper
+- **`install-hyprland-core.sh`** - Hyprland, Waybar, Hyprpaper, Hyprlock (links `.config/hypr`, `.config/waybar`, and resolves the per-machine `monitors/active.conf`)
+- **`install-rofi.sh`** - Rofi application launcher (links `.config/rofi`)
 - **`install-wlogout.sh`** - wlogout (Wayland logout dialog)
-- **`install-qt-theming.sh`** - Kvantum, Qt5/Qt6 tools and Wayland support
+- **`install-qt-theming.sh`** - Kvantum, Qt5/Qt6 tools, Wayland support, kdeglobals
+- **`install-gtk-theming.sh`** - GTK 3/4 theming config
 - **`install-fonts.sh`** - JetBrains Mono Nerd Font
 - **`install-audio.sh`** - PipeWire audio system (with conflict handling)
 - **`install-networking.sh`** - NetworkManager and clipboard utilities
-- **`install-zsh.sh`** - Zsh shell and Oh My Zsh configuration
+- **`install-zsh.sh`** - Zsh shell and Oh My Zsh configuration (links `.zshrc`)
 - **`install-starship.sh`** - Starship prompt for terminal styling
 - **`install-neovim.sh`** - Neovim editor
-- **`install-utilities.sh`** - System utilities (htop, nvtop, neofetch, rofi-emoji, clipse, pavucontrol)
+- **`install-kitty.sh`** - Kitty terminal
+- **`install-tmux.sh`** - Tmux terminal multiplexer
+- **`install-utilities.sh`** - System utilities (btop, htop, nvtop, neofetch, rofi-emoji, clipse, pavucontrol)
+- **`install-blender.sh`** - Blender 3D suite
 - **`install-fzf.sh`** - fzf (Fuzzy Finder) command-line tool
 - **`install-extras.sh`** - Extra applications (Sioyek PDF reader, OpenSSH)
 - **`install-gpu-drivers.sh`** - GPU driver detection and installation (NVIDIA)
 - **`install-pywal.sh`** - Pywal color scheme generator
+- **`install-wallpapers.sh`** - Downloads the wallpaper set used by `wallpapers.sh`
 - **`install-zen-browser.sh`** - Zen browser (privacy-focused)
 - **`install-vscode-ms.sh`** - VS Code Microsoft Official build
+- **`install-desktop-entries.sh`** - Links custom `.desktop` launchers (7z, Calendar, Gmail, Revolut)
 
 ### Configuration
-- **`sym-link.sh`** - Creates symlinks for all dotfiles configuration
-- **`wallpapers.sh`** - Sets up wallpapers (if it exists in your dotfiles)
+- **`.config/hypr/scripts/wallpapers.sh`** - Picks a random wallpaper, applies it via hyprpaper/hyprlock, and regenerates the Pywal color scheme
 
 ## What Gets Installed
 
@@ -75,10 +83,9 @@ chmod +x setup.sh
 
 The `setup.sh` script performs the following steps in order:
 
-1. **Install Packages** - Runs all installation scripts
-2. **Create Symlinks** - Sets up configuration files
-3. **Setup Wallpapers** - Applies wallpapers via `wallpapers.sh`
-4. **Reload Hyprland** - Reloads configuration with `hyprctl reload`
+1. **Install Packages** - Runs all installation scripts (each also links its own config)
+2. **Setup Wallpapers** - Applies wallpapers via `wallpapers.sh`
+3. **Reload Hyprland** - Reloads configuration with `hyprctl reload`
 
 ## Manual Installation
 
@@ -87,23 +94,29 @@ If you prefer to install components individually, you can run each script separa
 ```bash
 ./install.sh                    # System setup and Paru
 ./install-hyprland-core.sh      # Hyprland compositor
+./install-rofi.sh               # Rofi launcher
 ./install-wlogout.sh            # wlogout logout dialog
 ./install-qt-theming.sh         # Qt theming
+./install-gtk-theming.sh        # GTK theming
 ./install-fonts.sh              # Fonts
 ./install-audio.sh              # PipeWire audio
 ./install-networking.sh         # NetworkManager
 ./install-zsh.sh                # Zsh setup
 ./install-starship.sh           # Starship prompt
 ./install-neovim.sh             # Neovim
+./install-kitty.sh              # Kitty terminal
+./install-tmux.sh               # Tmux
 ./install-utilities.sh          # System utilities
+./install-blender.sh            # Blender
 ./install-fzf.sh                # fzf (Fuzzy Finder)
 ./install-extras.sh             # Extra applications
 ./install-gpu-drivers.sh        # GPU drivers
 ./install-pywal.sh              # Pywal
+./install-wallpapers.sh         # Download wallpaper set
 ./install-zen-browser.sh        # Zen Browser
 ./install-vscode-ms.sh          # VS Code
-./sym-link.sh                   # Create symlinks
-./wallpapers.sh                 # Apply wallpapers (if exists)
+./install-desktop-entries.sh    # Custom .desktop launchers
+./.config/hypr/scripts/wallpapers.sh  # Apply a wallpaper + regenerate colors
 hyprctl reload                  # Reload Hyprland
 ```
 
@@ -123,9 +136,8 @@ hyprctl reload                  # Reload Hyprland
 
 ## Customization
 
-- Edit individual `.sh` files to add/remove packages
-- Modify `sym-link.sh` to change which dotfiles are linked
-- Create `wallpapers.sh` in this directory for custom wallpaper setup
+- Edit individual `.sh` files to add/remove packages or change which dotfiles they link
+- Edit `.config/hypr/scripts/wallpapers.sh` for custom wallpaper behavior
 - Edit configuration files in `.config/` directory
 
 ## Troubleshooting
@@ -141,26 +153,31 @@ hyprctl reload                  # Reload Hyprland
 dotfiles/
 ├── setup.sh                        # Main orchestrator
 ├── install.sh                      # System setup & Paru
-├── install-hyprland-core.sh        # Hyprland, Waybar, Rofi, Hyprpaper
+├── install-hyprland-core.sh        # Hyprland, Waybar, Hyprpaper, Hyprlock
+├── install-rofi.sh                 # Rofi launcher
 ├── install-wlogout.sh              # wlogout logout dialog
 ├── install-qt-theming.sh           # Qt theming
+├── install-gtk-theming.sh          # GTK theming
 ├── install-fonts.sh                # Fonts
 ├── install-audio.sh                # PipeWire audio
 ├── install-networking.sh           # NetworkManager
 ├── install-zsh.sh                  # Zsh setup
 ├── install-starship.sh             # Starship prompt
 ├── install-neovim.sh               # Neovim setup
+├── install-kitty.sh                # Kitty terminal
+├── install-tmux.sh                 # Tmux
 ├── install-utilities.sh            # System utilities
+├── install-blender.sh              # Blender
 ├── install-fzf.sh                  # fzf (Fuzzy Finder)
 ├── install-extras.sh               # Extra applications
 ├── install-gpu-drivers.sh          # GPU drivers
 ├── install-pywal.sh                # Pywal setup
+├── install-wallpapers.sh           # Wallpaper set downloader
 ├── install-zen-browser.sh          # Zen Browser setup
 ├── install-vscode-ms.sh            # VS Code setup
-├── sym-link.sh                     # Symlink creator
-├── wallpapers.sh                   # Wallpaper setup (create as needed)
+├── install-desktop-entries.sh      # Custom .desktop launchers
 ├── .config/                        # Configuration files
-│   ├── hypr/                       # Hyprland config
+│   ├── hypr/                       # Hyprland config (+ scripts/wallpapers.sh)
 │   ├── waybar/                     # Waybar config
 │   ├── rofi/                       # Rofi config
 │   ├── nvim/                       # Neovim config

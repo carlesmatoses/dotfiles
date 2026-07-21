@@ -58,7 +58,7 @@ done
 # Restart hyprpaper to apply new wallpaper
 killall hyprpaper 2>/dev/null
 sleep 0.2
-hyprpaper &
+hyprpaper >/dev/null 2>&1 &
 disown
 
 # Also update hyprlock background
@@ -71,5 +71,6 @@ wal -i "$WALLPAPER" -n
 
 # restart waybar
 pkill waybar
-waybar &
+waybar >/dev/null 2>&1 &
+disown
 echo "Waybar restarted to apply new colors!"

@@ -23,9 +23,11 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     fi
 
     echo "Installing latest Neovim binary..."
-    curl -LO "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-${ARCH}.tar.gz"
+    TMP_DIR=$(mktemp -d)
+    trap 'rm -rf "$TMP_DIR"' EXIT
+    curl -LO --output-dir "$TMP_DIR" "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-${ARCH}.tar.gz"
     sudo rm -rf /opt/nvim
-    sudo tar -C /opt -xzf "nvim-linux-${ARCH}.tar.gz"
+    sudo tar -C /opt -xzf "$TMP_DIR/nvim-linux-${ARCH}.tar.gz"
 
     # Create symlink for global access
     sudo ln -sf /opt/nvim-linux-${ARCH}/bin/nvim /usr/local/bin/nvim
@@ -41,9 +43,6 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
         sudo pacman -S --noconfirm python-pip
         pip install --user pynvim
     fi
-
-    # Clean up
-    rm "nvim-linux-${ARCH}.tar.gz"
 
     echo "Added to PATH. Neovim installed to /opt/nvim-linux-${ARCH}/"
 elif [[ "$OSTYPE" == "darwin"* ]]; then

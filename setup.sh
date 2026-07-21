@@ -51,8 +51,10 @@ print_section "STEP 1: Installing Packages"
 scripts_to_run=(
     "install.sh"
     "install-hyprland-core.sh"
+    "install-rofi.sh"
     "install-wlogout.sh"
     "install-qt-theming.sh"
+    "install-gtk-theming.sh"
     "install-fonts.sh"
     "install-audio.sh"
     "install-networking.sh"
@@ -60,12 +62,17 @@ scripts_to_run=(
     "install-starship.sh"
     "install-neovim.sh"
     "install-fzf.sh"
+    "install-kitty.sh"
+    "install-tmux.sh"
     "install-utilities.sh"
+    "install-blender.sh"
     "install-extras.sh"
     "install-gpu-drivers.sh"
     "install-pywal.sh"
+    "install-wallpapers.sh"
     "install-zen-browser.sh"
     "install-vscode-ms.sh"
+    "install-desktop-entries.sh"
 )
 
 for script in "${scripts_to_run[@]}"; do
@@ -74,17 +81,8 @@ for script in "${scripts_to_run[@]}"; do
     fi
 done
 
-# Step 2: Create symlinks
-print_section "STEP 2: Creating Symlinks"
-
-if [ -f "$SCRIPT_DIR/sym-link.sh" ]; then
-    run_script "sym-link.sh"
-else
-    echo -e "${RED}✗ sym-link.sh not found${NC}"
-fi
-
-# Step 3: Execute wallpapers script if it exists
-print_section "STEP 3: Setting Up Wallpapers"
+# Step 2: Execute wallpapers script if it exists
+print_section "STEP 2: Setting Up Wallpapers"
 
 if [ -f "$SCRIPT_DIR/.config/hypr/scripts/wallpapers.sh" ]; then
     run_script ".config/hypr/scripts/wallpapers.sh"
@@ -92,8 +90,8 @@ else
     echo -e "${YELLOW}⚠ wallpapers.sh not found (skipping)${NC}"
 fi
 
-# Step 4: Reload Hyprland configuration
-print_section "STEP 4: Reloading Hyprland"
+# Step 3: Reload Hyprland configuration
+print_section "STEP 3: Reloading Hyprland"
 
 if command -v hyprctl &> /dev/null; then
     echo "-> Reloading Hyprland configuration..."
@@ -109,7 +107,7 @@ echo ""
 echo -e "${GREEN}✓ All installation steps completed!${NC}"
 echo ""
 echo "Summary of changes:"
-echo "  • Installed system packages and utilities"
+echo "  • Installed system packages and utilities (each linking its own config)"
 echo "  • Installed Zsh and plugins"
 echo "  • Installed Starship prompt"
 echo "  • Installed Neovim"
@@ -117,8 +115,6 @@ echo "  • Installed fzf (Fuzzy Finder)"
 echo "  • Installed Pywal"
 echo "  • Installed Zen Browser"
 echo "  • Installed VS Code (Microsoft Official)"
-echo "  • Installed fzf (Fuzzy Finder)"
-echo "  • Created configuration symlinks"
 echo "  • Applied wallpapers"
 echo "  • Reloaded Hyprland"
 echo ""

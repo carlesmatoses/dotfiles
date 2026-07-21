@@ -11,7 +11,8 @@ else
     sudo pacman -S --needed --noconfirm wlogout
 fi
 
+echo "-> Linking wlogout configuration..."
+rm -rf ~/.config/wlogout
+ln -sf ~/github/dotfiles/.config/wlogout ~/.config/wlogout
+
 echo "✅ wlogout installed successfully!"
-echo ""
-echo "ℹ️  wlogout configuration will be linked from .config/wlogout"
-echo "   This happens automatically when sym-link.sh is executed."

@@ -11,4 +11,8 @@ else
     exit 1
 fi
 
+echo "-> Linking wal configuration..."
+rm -rf ~/.config/wal
+ln -sf ~/github/dotfiles/.config/wal ~/.config/wal
+
 echo "✅ Pywal installed successfully!"

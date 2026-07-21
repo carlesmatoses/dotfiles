@@ -11,7 +11,8 @@ else
     sudo pacman -S --needed --noconfirm starship
 fi
 
+echo "-> Linking Starship configuration..."
+rm -f ~/.config/starship.toml
+ln -sf ~/github/dotfiles/.config/starship.toml ~/.config/starship.toml
+
 echo "✅ Starship prompt installed successfully!"
-echo ""
-echo "ℹ️  Starship configuration will be linked from .config/starship.toml"
-echo "   This happens automatically when sym-link.sh is executed."

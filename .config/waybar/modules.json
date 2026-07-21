@@ -55,93 +55,12 @@
         "tooltip": false
     },
 
-    // Hypridle inhibitor
-    "custom/hypridle": {
-        "format": "",
-        "return-type": "json",
-        "escape": true,
-        "exec-on-event": true,
-        "interval": 60,
-        "exec": "~/.config/hypr/scripts/hypridle.sh status",
-        "on-click": "~/.config/hypr/scripts/hypridle.sh toggle",
-        "on-click-right": "hyprlock"
-    },
-
-    // Updates Count
-    "custom/updates": {
-        "format": " {}",
-        "tooltip-format": "{}",
-        "escape": true,
-        "return-type": "json",
-        "exec": "~/.config/ml4w/scripts/updates.sh",
-        "restart-interval": 60,
-        "on-click": "kitty -e ~/.config/ml4w/scripts/installupdates.sh",
-        "tooltip": false
-    },
-
-    // Theme Starter Label
-    "custom/starter": {
-        "format": "THEME STARTER",
-        "tooltip": false
-    },
-
-    // Wallpaper
-    "custom/wallpaper": {
-        "format": "",
-        "on-click": "waypaper",
-        "on-click-right": "~/.config/hypr/scripts/wallpaper-effects.sh",
-        "tooltip": false
-    },
-
-    // Waybar Themes
-    "custom/waybarthemes": {
-        "format": "",
-        "on-click": "~/.config/waybar/themeswitcher.sh",
-        "tooltip": false
-    },
-
     // Settings
     "custom/settings": {
         "format": "",
         "on-click": "rofi -modi 'Config:~/.config/rofi/scripts/config.sh' -show Config",
         "tooltip": false
 
-    },
-
-    // Keybindings
-    "custom/keybindings": {
-        "format": "",
-        "on-click": "~/.config/hypr/scripts/keybindings.sh",
-        "tooltip": false
-    },
-
-    // Filemanager Launcher
-    "custom/filemanager": {
-        "format": "",
-        "on-click": "nautilus",
-        "tooltip": false
-    },
-
-    // Browser Launcher
-    "custom/browser": {
-        "format": "",
-        "on-click": "~/.config/ml4w/settings/browser.sh",
-        "tooltip": false
-    },
-
-    // ML4W Welcome App
-    "custom/ml4w-welcome": {
-        "on-click": "flatpak run com.ml4w.sidebar",
-        "on-click-right": "flatpak run com.ml4w.welcome",
-        "format": " ",
-        "tooltip-format": "Open Sidebar"
-    },
-
-    // ChatGPT Launcher
-    "custom/chatgpt": {
-        "format": "",
-        "on-click": "chromium --app=https://chat.openai.com",
-        "tooltip": false
     },
 
     // Rofi Application Launcher
@@ -249,30 +168,6 @@
             "memory",
             "hyprland/language"
         ]
-    },
-
-    // Group Settings
-    "group/settings": {
-        "orientation": "inherit",
-        "drawer": {
-            "transition-duration": 300,
-            "children-class": "not-memory",
-            "transition-left-to-right": false
-        },
-        "modules": [
-            "custom/settings",
-            "custom/waybarthemes",
-            "custom/wallpaper"
-        ]
-    },
-
-    // Group Quicklinks
-    "group/quicklinks": {
-        "orientation": "horizontal",
-        "modules": [
-            "custom/filemanager",
-            "custom/browser"
-         ]
     },
 
     // Network

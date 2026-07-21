@@ -34,20 +34,16 @@
         "hyprland/workspaces"
     ],
 
-    // Modules Right    
+    // Modules Right
     "modules-right": [
-        "custom/updates",
         "pulseaudio",
         "backlight",
         "bluetooth",
-        "battery", 
+        "battery",
         "network",
         "group/hardware",
         "custom/cliphist",
-        // "custom/hypridle",
-        // "custom/hyprshade",
         "custom/exit",
-        // "custom/ml4w-welcome",
         "clock"
     ]
 }

@@ -35,4 +35,22 @@ if command -v paru &> /dev/null; then
     paru -S --needed --noconfirm clipse
 fi
 
+# 7. Install htop (process viewer)
+echo "-> Installing htop..."
+sudo pacman -S --needed --noconfirm htop
+
+echo "-> Linking btop configuration..."
+mkdir -p ~/.config/btop
+rm -f ~/.config/btop/btoprc
+ln -sf ~/github/dotfiles/.config/btop/btoprc ~/.config/btop/btoprc
+
+echo "-> Linking clipse configuration..."
+rm -rf ~/.config/clipse
+ln -sf ~/github/dotfiles/.config/clipse ~/.config/clipse
+
+echo "-> Linking htop configuration..."
+mkdir -p ~/.config/htop
+rm -f ~/.config/htop/htoprc
+ln -sf ~/github/dotfiles/.config/htop/htoprc ~/.config/htop/htoprc
+
 echo "✅ System utilities installed successfully!"

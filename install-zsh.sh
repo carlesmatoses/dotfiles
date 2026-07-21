@@ -104,6 +104,10 @@ else
     echo "ℹ️  Zsh is already your default shell."
 fi
 
+echo "-> Linking .zshrc..."
+rm -f ~/.zshrc
+ln -sf ~/github/dotfiles/.zshrc ~/.zshrc
+
 echo ""
 echo "✅ Zsh installation completed!"
 echo "   Current shell: $SHELL"
