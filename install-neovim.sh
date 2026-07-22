@@ -40,8 +40,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
         sudo dnf install -y python3-pip
         pip3 install --user pynvim
     elif command -v pacman &> /dev/null; then
-        sudo pacman -S --noconfirm python-pip
-        pip install --user pynvim
+        sudo pacman -S --needed --noconfirm python-pynvim
     fi
 
     echo "Added to PATH. Neovim installed to /opt/nvim-linux-${ARCH}/"
@@ -82,3 +81,9 @@ fi
 
 echo "Neovim installation completed!"
 echo "Run 'nvim --version' to verify the installation."
+
+echo "-> Linking Neovim (LazyVim) configuration..."
+rm -rf ~/.config/nvim
+ln -sf ~/github/dotfiles/.config/nvim ~/.config/nvim
+
+echo "✅ Neovim configuration linked!"

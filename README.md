@@ -30,7 +30,8 @@ Each script installs its package(s) **and** links its own configuration from thi
 - **`install-networking.sh`** - NetworkManager and clipboard utilities
 - **`install-zsh.sh`** - Zsh shell and Oh My Zsh configuration (links `.zshrc`)
 - **`install-starship.sh`** - Starship prompt for terminal styling
-- **`install-neovim.sh`** - Neovim editor
+- **`install-neovim.sh`** - Neovim editor with LazyVim (links `.config/nvim`)
+- **`install-lazygit.sh`** - Lazygit (terminal UI for git, used by LazyVim's `<leader>gg`; links `.config/lazygit` with a Catppuccin theme so it isn't at the mercy of the terminal's pywal-generated ANSI palette)
 - **`install-kitty.sh`** - Kitty terminal
 - **`install-tmux.sh`** - Tmux terminal multiplexer
 - **`install-utilities.sh`** - System utilities (btop, htop, nvtop, neofetch, rofi-emoji, clipse, pavucontrol)
@@ -43,9 +44,11 @@ Each script installs its package(s) **and** links its own configuration from thi
 - **`install-zen-browser.sh`** - Zen browser (privacy-focused)
 - **`install-vscode-ms.sh`** - VS Code Microsoft Official build
 - **`install-desktop-entries.sh`** - Links custom `.desktop` launchers (7z, Calendar, Gmail, Revolut)
+- **`install-mako.sh`** - Mako notification daemon (links `.config/mako`, Catppuccin themed; started via `exec-once` in Hyprland)
 
 ### Configuration
-- **`.config/hypr/scripts/wallpapers.sh`** - Picks a random wallpaper, applies it via hyprpaper/hyprlock, and regenerates the Pywal color scheme
+- **`.config/hypr/scripts/wallpapers.sh`** - Picks a random wallpaper (or applies one passed as an argument), applies it via hyprpaper/hyprlock, and regenerates the Pywal color scheme (`SUPER+SHIFT+W`)
+- **`.config/hypr/scripts/wallpaper-picker.sh`** - Rofi thumbnail browser over every downloaded wallpaper (`SUPER+W`): Enter sets it as the wallpaper, `Alt+d` deletes the image and its matching line in `urls.txt`, `Alt+a` prompts for a URL, downloads it, and appends it to `urls.txt`
 
 ## What Gets Installed
 
@@ -56,7 +59,8 @@ Each script installs its package(s) **and** links its own configuration from thi
 - Dolphin (file manager)
 
 ### Development
-- Neovim
+- Neovim (LazyVim distribution, Catppuccin colorscheme)
+- Lazygit (git terminal UI)
 - Visual Studio Code (Microsoft Official)
 - Git + utilities
 
@@ -164,6 +168,7 @@ dotfiles/
 ├── install-zsh.sh                  # Zsh setup
 ├── install-starship.sh             # Starship prompt
 ├── install-neovim.sh               # Neovim setup
+├── install-lazygit.sh              # Lazygit
 ├── install-kitty.sh                # Kitty terminal
 ├── install-tmux.sh                 # Tmux
 ├── install-utilities.sh            # System utilities
@@ -180,7 +185,7 @@ dotfiles/
 │   ├── hypr/                       # Hyprland config (+ scripts/wallpapers.sh)
 │   ├── waybar/                     # Waybar config
 │   ├── rofi/                       # Rofi config
-│   ├── nvim/                       # Neovim config
+│   ├── nvim/                       # Neovim config (LazyVim starter)
 │   └── ... (other configs)
 └── README.md                       # This file
 ```

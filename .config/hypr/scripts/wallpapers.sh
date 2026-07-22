@@ -23,16 +23,21 @@ fi
 echo "Device: $DEVICE"
 echo "Monitors: ${MONITORS[@]}"
 
-# Get all supported wallpaper files (jpg, jpeg, png, webp)
-WALLPAPERS=($(find "$WALLPAPER_DIR" -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.webp" \)))
+if [ -n "$1" ] && [ -f "$1" ]; then
+    # Explicit wallpaper passed in (e.g. from wallpaper-picker.sh) - skip random pick
+    WALLPAPER="$1"
+else
+    # Get all supported wallpaper files (jpg, jpeg, png, webp)
+    WALLPAPERS=($(find "$WALLPAPER_DIR" -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.webp" \)))
 
-if [ ${#WALLPAPERS[@]} -eq 0 ]; then
-    echo "No supported wallpaper files found!"
-    exit 1
+    if [ ${#WALLPAPERS[@]} -eq 0 ]; then
+        echo "No supported wallpaper files found!"
+        exit 1
+    fi
+
+    # Get a random wallpaper
+    WALLPAPER="$(printf "%s\n" "${WALLPAPERS[@]}" | shuf -n1)"
 fi
-
-# Get a random wallpaper
-WALLPAPER="$(printf "%s\n" "${WALLPAPERS[@]}" | shuf -n1)"
 
 echo "Setting wallpaper: $(basename "$WALLPAPER")"
 

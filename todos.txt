@@ -1,5 +1,0 @@
-add the cloning of oh-my-zsh pluggins
-install rofi
-install controllers such as networkmanager and pipewire
-install vscode
-install nvim
