@@ -5,6 +5,7 @@
 .config/hypr/wallpapers/*.webp
 .config/hypr/wallpapers/*.svg
 .config/hypr/monitors/active.conf
+.config/hypr/keyboard/active.conf
 nvim-linux-*.tar.gz
 .config/clipse/clipboard_history.json
 .config/clipse/clipse.log

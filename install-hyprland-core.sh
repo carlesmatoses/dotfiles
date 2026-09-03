@@ -33,6 +33,15 @@ else
     ln -sf "$MONITORS_DIR/carles-lpt.conf" "$MONITORS_DIR/active.conf"
 fi
 
+# Resolve this machine's keyboard layout by hostname (falls back to carles-lpt's layout)
+KEYBOARD_DIR=~/.config/hypr/keyboard
+if [ -f "$KEYBOARD_DIR/$DEVICE.conf" ]; then
+    ln -sf "$KEYBOARD_DIR/$DEVICE.conf" "$KEYBOARD_DIR/active.conf"
+else
+    echo "⚠ No keyboard config found for device '$DEVICE', falling back to carles-lpt.conf"
+    ln -sf "$KEYBOARD_DIR/carles-lpt.conf" "$KEYBOARD_DIR/active.conf"
+fi
+
 echo "-> Linking Waybar configuration..."
 rm -rf ~/.config/waybar
 ln -sf ~/github/dotfiles/.config/waybar ~/.config/waybar
