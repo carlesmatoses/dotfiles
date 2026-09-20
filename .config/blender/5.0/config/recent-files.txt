@@ -1,1 +1,34 @@
+/home/carles/github/miracle/assets/miracle.blend
+/home/carles/github/tesis_presentacio/images.blend
+/tmp/quit.blend
+/run/media/carles/VFX_library/VFX_library/3D/photogrametry/tocon piedra/tocon piedra.blend
+/run/media/carles/VFX_library/VFX_library/3D/photogrametry/zapato/zapato.blend
+/run/media/carles/VFX_library/VFX_library/3D/blender_library2V/modelos/LIBRARY_V36.blend
+/run/media/carles/VFX_library/VFX_library/3D/blend_file_library/CustomLibrary.blend
+/home/carles/github/tesis/visualizations.blend
+/home/carles/github/tesis/edge size.blend
+/home/carles/github/tesis/mesh comparison.blend
+/tmp/90289_autosave.blend
+/home/carles/github/tesis/ray_marching.blend
+/home/carles/github/tesis/small test.blend
+/home/carles/github/tesis/dragon_render.blend
+/home/carles/github/tesis/my_milo/sdf_check.blend
+/home/carles/github/tesis/my_milo/test generator.blend
+/run/media/carles/VFX_library/developement_projects/logo/sk.blend
+/home/carles/github/tesis/my_milo/examples.blend
+/home/carles/github/tesis2/visualizations.blend
+/run/media/carles/VFX_library/developement_projects/YOUTUBE ambient occlusion/assembler2_save.blend
+/run/media/carles/VFX_library/developement_projects/YOUTUBE ambient occlusion/assembler2.blend
+/run/media/carles/VFX_library/VFX_library/3D/blender_library2V/ambient_occlusion.blend
+/run/media/carles/VFX_library/developement_projects/YOUTUBE ambient occlusion/assembler3.blend
+/home/carles/Downloads/test_backup/assembler2.blend
+/home/carles/Downloads/Untitled.blend
+/run/media/carles/VFX_library/developement_projects/AmbientOcclusionStudy/sphere.blend
+/run/media/carles/VFX_library/developement_projects/YOUTUBE ambient occlusion/animations.blend
+/run/media/carles/VFX_library/developement_projects/AmbientOcclusionStudy/monke.blend
+/run/media/carles/VFX_library/developement_projects/YOUTUBE ambient occlusion/assembler.blend
+/run/media/carles/VFX_library/developement_projects/AmbientOcclusionStudy/monke1.blend
+/run/media/carles/VFX_library/VFX_library/3D/blender_library2V/modelos/stanford_bunny.blend
+/run/media/carles/VFX_library/VFX_library/3D/blender_library2V/modelos/cadira d'espart.blend
+/run/media/carles/VFX_library/VFX_library/3D/blender_library2V/projects/sueca_room.blend
 /home/carles/github/dotfiles/.config/blender/5.0/scripts/startup/bl_app_templates_user/test/startup.blend

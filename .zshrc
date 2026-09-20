@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+# export PATH="/opt/miniconda3/bin:$PATH"  # commented out by conda initialize
 
 # Use the systemd socket-activated ssh-agent (systemctl --user enable --now ssh-agent.socket)
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
@@ -88,6 +89,18 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='nvim'
 # fi
 
+# # Start ssh-agent if not running
+# if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+#     eval "$(ssh-agent -s)" > /dev/null
+# fi
+
+# # Add SSH key if not already added
+# if ! ssh-add -l | grep -q "github_pc"; then
+#     ssh-add ~/.ssh/github_pc 2>/dev/null
+# fi
+
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
 
@@ -106,7 +119,7 @@ alias tmuxconfig="nvim ~/.tmux.conf"
 alias weztermconfig="nvim ~/.config/wezterm/wezterm.lua"
 alias dockerps="docker ps --no-trunc | less -S"
 alias around="cd ~/github/around"
-around_start() {
+aroundstart() {
   (cd ~/github/around && docker compose up -d)
 }
 # Start fzf
@@ -115,3 +128,19 @@ source <(fzf --zsh)
 
 # Start starship prompt
 eval "$(starship init zsh)"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
