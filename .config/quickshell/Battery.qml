@@ -31,7 +31,7 @@ Pill {
     return icons[i] + " " + percent + "%";
   }
 
-  color: critical ? Theme.critical : Theme.backgroundLight
+  baseColor: critical ? Theme.critical : Theme.backgroundLight
   foreground: critical ? Theme.textColor3 : Theme.textColor2
 
   // `animation: blink 0.5s linear infinite alternate` on .critical

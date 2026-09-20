@@ -7,6 +7,9 @@ Rectangle {
   id: root
 
   property string text: ""
+  // Subclasses set baseColor, not color: `color` applies Theme.surfaceAlpha
+  // on top so bar translucency is a single knob in Theme.qml.
+  property color baseColor: Theme.backgroundLight
   property color foreground: Theme.textColor2
   property int fontSize: Theme.pillFontSize
   property bool bold: false
@@ -14,7 +17,7 @@ Rectangle {
   signal clicked()
   signal rightClicked()
 
-  color: Theme.backgroundLight
+  color: Qt.alpha(baseColor, Theme.surfaceAlpha)
   radius: Theme.radius
   visible: text !== ""
 

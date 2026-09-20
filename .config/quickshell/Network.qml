@@ -32,7 +32,7 @@ Pill {
   }
 
   // `#network.disconnected { background-color: #f53c3c }`
-  color: connected ? Theme.backgroundLight : Theme.critical
+  baseColor: connected ? Theme.backgroundLight : Theme.critical
   foreground: Theme.textColor2
 
   Process {

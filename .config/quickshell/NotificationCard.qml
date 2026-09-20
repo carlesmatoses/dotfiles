@@ -22,7 +22,7 @@ Rectangle {
   implicitWidth: 350
   implicitHeight: layout.implicitHeight + 20   // padding: 10
 
-  color: Theme.backgroundDark
+  color: Qt.alpha(Theme.backgroundDark, Theme.panelAlpha)
   radius: 8
   border.width: 2
   // mako's `[urgency=high] border-color` was a distinct accent; use the

@@ -46,7 +46,7 @@ PanelWindow {
     height: Math.min(parent.height - root.barHeight - root.edgeMargin * 2,
                      header.height + 8 + Math.max(60, list.contentHeight) + 16)
 
-    color: Theme.backgroundDark
+    color: Qt.alpha(Theme.backgroundDark, Theme.panelAlpha)
     radius: 8
     border.width: 2
     border.color: Theme.accent

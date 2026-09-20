@@ -36,6 +36,19 @@ Singleton {
   // it - this is what replaced hyprpaper.
   property string wallpaper: ""
 
+  // Bar chip translucency. 1.0 = opaque (what waybar did), 0.75 = 25%
+  // transparent. Pairs with the `namespace quickshell` blur layerrule in
+  // hyprland.conf, without which this just shows the raw wallpaper.
+  readonly property real surfaceAlpha: 0.75
+
+  // Overlay dialogs (launcher, emoji, keybinds, wallpaper picker,
+  // notification centre). These sit on blurred layer-shell namespaces, so an
+  // opaque panel throws the blur away - keep them see-through.
+  readonly property real panelAlpha: 0.55
+  // The full-screen dim behind those dialogs. Stacking a heavy scrim under an
+  // opaque panel was what made the launcher read as a black slab.
+  readonly property real scrimAlpha: 0.25
+
   // Metrics lifted from waybar/style.css.
   readonly property string fontFamily: "JetBrainsMono Nerd Font"
   readonly property int radius: 15

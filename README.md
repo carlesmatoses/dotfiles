@@ -20,9 +20,7 @@ chmod +x setup.sh
 Each script installs its package(s) **and** links its own configuration from this repo — there's no separate symlink step.
 
 - **`install.sh`** - System setup and Paru installation
-- **`install-hyprland-core.sh`** - Hyprland, Waybar, Hyprpaper, Hyprlock (links `.config/hypr`, `.config/waybar`, and resolves the per-machine `monitors/active.conf`)
-- **`install-rofi.sh`** - Rofi application launcher (links `.config/rofi`)
-- **`install-wlogout.sh`** - wlogout (Wayland logout dialog)
+- **`install-hyprland-core.sh`** - Hyprland, Hyprpaper, Hyprlock (links `.config/hypr` and resolves the per-machine `monitors/monitors.conf` and `keyboard/keyboards.conf`)
 - **`install-qt-theming.sh`** - Kvantum, Qt5/Qt6 tools, Wayland support, kdeglobals
 - **`install-gtk-theming.sh`** - GTK 3/4 theming config
 - **`install-fonts.sh`** - JetBrains Mono Nerd Font
@@ -34,7 +32,7 @@ Each script installs its package(s) **and** links its own configuration from thi
 - **`install-lazygit.sh`** - Lazygit (terminal UI for git, used by LazyVim's `<leader>gg`; links `.config/lazygit` with a Catppuccin theme so it isn't at the mercy of the terminal's pywal-generated ANSI palette)
 - **`install-kitty.sh`** - Kitty terminal
 - **`install-tmux.sh`** - Tmux terminal multiplexer
-- **`install-utilities.sh`** - System utilities (btop, htop, nvtop, neofetch, rofi-emoji, clipse, pavucontrol)
+- **`install-utilities.sh`** - System utilities (btop, htop, nvtop, neofetch, clipse, pavucontrol)
 - **`install-blender.sh`** - Blender 3D suite
 - **`install-fzf.sh`** - fzf (Fuzzy Finder) command-line tool
 - **`install-extras.sh`** - Extra applications (Sioyek PDF reader, OpenSSH)
@@ -42,20 +40,18 @@ Each script installs its package(s) **and** links its own configuration from thi
 - **`install-pywal.sh`** - Pywal color scheme generator
 - **`install-wallpapers.sh`** - Downloads the wallpaper set used by `wallpapers.sh`
 - **`install-zen-browser.sh`** - Zen browser (privacy-focused)
-- **`install-vscode-ms.sh`** - VS Code Microsoft Official build
 - **`install-desktop-entries.sh`** - Links custom `.desktop` launchers (7z, Calendar, Gmail, Revolut)
-- **`install-mako.sh`** - Mako notification daemon (links `.config/mako`, Catppuccin themed; started via `exec-once` in Hyprland)
+- **`install-quickshell.sh`** - Quickshell: status bar, app launcher, notification daemon, power menu, wallpaper picker, emoji picker and keybinds cheatsheet (links `.config/quickshell`, Pywal themed; started via `exec-once = qs` in Hyprland). Also removes dunst/mako, which would otherwise claim `org.freedesktop.Notifications` before Quickshell can.
 
 ### Configuration
-- **`.config/hypr/scripts/wallpapers.sh`** - Picks a random wallpaper (or applies one passed as an argument), applies it via hyprpaper/hyprlock, and regenerates the Pywal color scheme (`SUPER+SHIFT+W`)
-- **`.config/hypr/scripts/wallpaper-picker.sh`** - Rofi thumbnail browser over every downloaded wallpaper (`SUPER+W`): Enter sets it as the wallpaper, `Alt+d` deletes the image and its matching line in `urls.txt`, `Alt+a` prompts for a URL, downloads it, and appends it to `urls.txt`
+- **`.config/hypr/scripts/wallpapers.sh`** - Picks a random wallpaper (or applies one passed as an argument), points hyprlock at it, and regenerates the Pywal color scheme (`SUPER+SHIFT+W`). Quickshell draws the wallpaper itself from `colors.json` (`.config/quickshell/Wallpaper.qml`)
+- **`.config/quickshell/WallpaperPicker.qml`** - Thumbnail browser over every downloaded wallpaper (`SUPER+W`): type to filter, Enter sets it as the wallpaper, `Alt+D` deletes the image and its matching line in `urls.txt`, `Alt+A` prompts for a URL, downloads it, and appends it to `urls.txt`. Thumbnails are cached under `~/.cache/quickshell/wallpaper-thumbs`.
 
 ## What Gets Installed
 
 ### Core System
 - Hyprland (Wayland compositor)
-- Waybar (status bar)
-- Rofi (application launcher)
+- Quickshell (status bar, app launcher, notifications, power menu, wallpaper picker, emoji picker, keybinds cheatsheet)
 - Dolphin (file manager)
 
 ### Development
@@ -75,7 +71,6 @@ Each script installs its package(s) **and** links its own configuration from thi
 - NetworkManager
 - PipeWire (audio)
 - htop, nvtop, neofetch
-- Rofi emoji picker
 - OpenSSH
 - wl-clipboard (Wayland clipboard)
 - clipse (clipboard manager)
@@ -98,8 +93,6 @@ If you prefer to install components individually, you can run each script separa
 ```bash
 ./install.sh                    # System setup and Paru
 ./install-hyprland-core.sh      # Hyprland compositor
-./install-rofi.sh               # Rofi launcher
-./install-wlogout.sh            # wlogout logout dialog
 ./install-qt-theming.sh         # Qt theming
 ./install-gtk-theming.sh        # GTK theming
 ./install-fonts.sh              # Fonts
@@ -118,7 +111,6 @@ If you prefer to install components individually, you can run each script separa
 ./install-pywal.sh              # Pywal
 ./install-wallpapers.sh         # Download wallpaper set
 ./install-zen-browser.sh        # Zen Browser
-./install-vscode-ms.sh          # VS Code
 ./install-desktop-entries.sh    # Custom .desktop launchers
 ./.config/hypr/scripts/wallpapers.sh  # Apply a wallpaper + regenerate colors
 hyprctl reload                  # Reload Hyprland
@@ -136,7 +128,6 @@ hyprctl reload                  # Reload Hyprland
 - The scripts use `paru` as an AUR helper. It will be installed automatically if not present.
 - Some scripts use `sudo` for system-wide package installation.
 - Hyprland must be running for the final reload step to work.
-- VS Code from `install-vscode-ms.sh` is the official Microsoft build (binary), not the AUR packaged version.
 
 ## Customization
 
@@ -157,9 +148,8 @@ hyprctl reload                  # Reload Hyprland
 dotfiles/
 ├── setup.sh                        # Main orchestrator
 ├── install.sh                      # System setup & Paru
-├── install-hyprland-core.sh        # Hyprland, Waybar, Hyprpaper, Hyprlock
-├── install-rofi.sh                 # Rofi launcher
-├── install-wlogout.sh              # wlogout logout dialog
+├── install-hyprland-core.sh        # Hyprland, Hyprpaper, Hyprlock
+├── install-quickshell.sh           # Quickshell bar, launcher, notifications, power menu, pickers
 ├── install-qt-theming.sh           # Qt theming
 ├── install-gtk-theming.sh          # GTK theming
 ├── install-fonts.sh                # Fonts
@@ -179,12 +169,10 @@ dotfiles/
 ├── install-pywal.sh                # Pywal setup
 ├── install-wallpapers.sh           # Wallpaper set downloader
 ├── install-zen-browser.sh          # Zen Browser setup
-├── install-vscode-ms.sh            # VS Code setup
 ├── install-desktop-entries.sh      # Custom .desktop launchers
 ├── .config/                        # Configuration files
 │   ├── hypr/                       # Hyprland config (+ scripts/wallpapers.sh)
-│   ├── waybar/                     # Waybar config
-│   ├── rofi/                       # Rofi config
+│   ├── quickshell/                 # Quickshell bar, launcher, notifications
 │   ├── nvim/                       # Neovim config (LazyVim starter)
 │   └── ... (other configs)
 └── README.md                       # This file

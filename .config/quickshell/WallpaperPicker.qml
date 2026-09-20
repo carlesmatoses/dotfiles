@@ -49,7 +49,7 @@ PanelWindow {
   WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
   WlrLayershell.namespace: "quickshell-wallpapers"
 
-  color: Qt.rgba(0, 0, 0, 0.5)
+  color: Qt.rgba(0, 0, 0, Theme.scrimAlpha)
   visible: WallpaperState.open
 
   FolderListModel {
@@ -198,7 +198,7 @@ PanelWindow {
     width: parent.width * 0.80    // script: `window {width: 80%; height: 90%}`
     height: parent.height * 0.90
 
-    color: Theme.backgroundDark
+    color: Qt.alpha(Theme.backgroundDark, Theme.panelAlpha)
     radius: 12
     border.width: 2
     border.color: Theme.accent

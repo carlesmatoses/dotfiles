@@ -32,7 +32,7 @@ PanelWindow {
   WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
   WlrLayershell.namespace: "quickshell-keybinds"
 
-  color: Qt.rgba(0, 0, 0, 0.5)
+  color: Qt.rgba(0, 0, 0, Theme.scrimAlpha)
   visible: KeybindsState.open
 
   FileView {
@@ -111,7 +111,7 @@ PanelWindow {
     width: 820
     height: Math.min(parent.height - 120, 620)
 
-    color: Theme.backgroundDark
+    color: Qt.alpha(Theme.backgroundDark, Theme.panelAlpha)
     radius: 8
     border.width: 3
     border.color: Theme.accent

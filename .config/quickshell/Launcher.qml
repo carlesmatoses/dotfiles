@@ -121,7 +121,7 @@ PanelWindow {
     height: Math.min(parent.height - 80,
                      6 + inputBar.height + 8 + root.listHeight + 14)
 
-    color: Theme.backgroundDark
+    color: Qt.alpha(Theme.backgroundDark, Theme.panelAlpha)
     radius: 8
     border.width: 3
     border.color: Theme.accent

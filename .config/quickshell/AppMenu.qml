@@ -6,7 +6,7 @@ Pill {
   Layout.rightMargin: Theme.moduleGap
 
   text: "Apps"
-  color: Theme.backgroundDark
+  baseColor: Theme.backgroundDark
   foreground: Theme.textColor1
 
   onClicked: LauncherState.toggle()

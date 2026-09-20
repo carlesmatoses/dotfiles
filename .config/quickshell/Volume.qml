@@ -47,7 +47,7 @@ Pill {
   }
 
   // `#pulseaudio.muted` flips to the dark background + textcolor1.
-  color: muted ? Theme.backgroundDark : Theme.backgroundLight
+  baseColor: muted ? Theme.backgroundDark : Theme.backgroundLight
   foreground: muted ? Theme.textColor1 : Theme.textColor2
 
   onClicked: Sh.run("pavucontrol")
