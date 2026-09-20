@@ -31,6 +31,11 @@ Singleton {
   // Not themed by wal in waybar either - these are literals in style.css.
   readonly property color critical: "#f53c3c"
 
+  // colors.json also records the image the palette was generated from, so the
+  // wallpaper rides the same watched file as the colors. Wallpaper.qml renders
+  // it - this is what replaced hyprpaper.
+  property string wallpaper: ""
+
   // Metrics lifted from waybar/style.css.
   readonly property string fontFamily: "JetBrainsMono Nerd Font"
   readonly property int radius: 15
@@ -60,6 +65,7 @@ Singleton {
       root.workspaceActive = w.colors.color2;
       root.accent = w.colors.color2;
       root.borderColor = w.colors.color4;
+      if (w.wallpaper) root.wallpaper = w.wallpaper;
     } catch (e) {
       console.warn("Theme: could not parse wal colors.json:", e);
     }

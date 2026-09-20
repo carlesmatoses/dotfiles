@@ -23,12 +23,6 @@ fi
 echo "-> Installing pavucontrol..."
 sudo pacman -S --needed --noconfirm pavucontrol
 
-# 5. Install rofi-emoji (emoji picker for Rofi)
-echo "-> Installing rofi-emoji..."
-if command -v paru &> /dev/null; then
-    paru -S --needed --noconfirm rofi-emoji
-fi
-
 # 6. Install clipse (clipboard manager)
 echo "-> Installing clipse (clipboard manager)..."
 if command -v paru &> /dev/null; then

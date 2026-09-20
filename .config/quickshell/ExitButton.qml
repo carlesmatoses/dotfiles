@@ -7,5 +7,5 @@ IconButton {
 
   text: "\uf011"   // nf-fa-power_off
 
-  onClicked: Sh.run("wlogout")
+  onClicked: PowerMenuState.toggle()
 }

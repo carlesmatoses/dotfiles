@@ -77,6 +77,9 @@ Pill {
     onTriggered: proc.running = true
   }
 
-  onClicked: Sh.run("rofi -modi 'Network:~/.config/rofi/scripts/network.sh' -show Network")
-  onRightClicked: Sh.run("nm-connection-editor")
+  // The rofi Network modi this used to open was mostly notify-send wrappers
+  // around nm-connection-editor and nmtui, so both buttons now go straight
+  // to the editor.
+  onClicked: Sh.run("nm-connection-editor")
+  onRightClicked: Sh.run("kitty -e nmtui")
 }

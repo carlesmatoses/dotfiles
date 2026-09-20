@@ -2,29 +2,12 @@
 
 WALLPAPER_DIR="$HOME/.config/hypr/wallpapers/"
 
-# Detect device by hostname
-DEVICE=$(cat /etc/hostname)
-
-# Define monitors for each device
-declare -A DEVICE_MONITORS
-DEVICE_MONITORS["carles-pc"]="DP-1 HDMI-A-1"
-DEVICE_MONITORS["carles-lpt"]=""  # Add your laptop monitors here
-
-# Get monitors for current device
-MONITORS=(${DEVICE_MONITORS[$DEVICE]})
-
-if [ ${#MONITORS[@]} -eq 0 ]; then
-    echo "No monitors configured for device: $DEVICE"
-    echo "Auto-detecting monitors..."
-    # Auto-detect monitors using hyprctl
-    MONITORS=($(hyprctl monitors | grep -oP 'Monitor \K[^ ]+'))
-fi
-
-echo "Device: $DEVICE"
-echo "Monitors: ${MONITORS[@]}"
+# The per-monitor list that used to live here only existed to generate
+# hyprpaper's per-output wallpaper blocks. Quickshell renders one background
+# surface per screen off Quickshell.screens, so no monitor list is needed.
 
 if [ -n "$1" ] && [ -f "$1" ]; then
-    # Explicit wallpaper passed in (e.g. from wallpaper-picker.sh) - skip random pick
+    # Explicit wallpaper passed in (e.g. from the Quickshell picker) - skip random pick
     WALLPAPER="$1"
 else
     # Get all supported wallpaper files (jpg, jpeg, png, webp)
@@ -41,30 +24,10 @@ fi
 
 echo "Setting wallpaper: $(basename "$WALLPAPER")"
 
-# Update hyprpaper configuration
-HYPRPAPER_CONFIG="$HOME/.config/hypr/hyprpaper.conf"
-cat > "$HYPRPAPER_CONFIG" << EOF
-preload = $WALLPAPER
-
-EOF
-
-# Generate wallpaper blocks for each monitor
-for MONITOR in "${MONITORS[@]}"; do
-    cat >> "$HYPRPAPER_CONFIG" << EOF
-wallpaper {
-    monitor = $MONITOR
-    path = $WALLPAPER
-    fit_mode = cover
-}
-
-EOF
-done
-
-# Restart hyprpaper to apply new wallpaper
-killall hyprpaper 2>/dev/null
-sleep 0.2
-hyprpaper >/dev/null 2>&1 &
-disown
+# The wallpaper itself is drawn by Quickshell (.config/quickshell/Wallpaper.qml),
+# which reads the `wallpaper` key out of ~/.cache/wal/colors.json. `wal -i`
+# below writes that file, so setting the colors sets the wallpaper - there is
+# no separate config to regenerate and no daemon to restart.
 
 # Also update hyprlock background
 HYPRLOCK_CONFIG="$HOME/.config/hypr/hyprlock.conf"
@@ -74,8 +37,8 @@ echo "Hyprlock background also updated to match!"
 # set colors with pywal
 wal -i "$WALLPAPER" -n
 
-# restart waybar
-pkill waybar
-waybar >/dev/null 2>&1 &
-disown
-echo "Waybar restarted to apply new colors!"
+# Quickshell reads ~/.cache/wal/colors.json through a watched FileView, so the
+# bar, launcher, notifications and wallpaper picker recolor on their own - no
+# restart needed. (Waybar used to be restarted here; it is no longer the bar,
+# and relaunching it would put a second bar on screen.)
+echo "Colors regenerated; Quickshell picks them up automatically."

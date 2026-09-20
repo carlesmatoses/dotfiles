@@ -33,15 +33,7 @@ PanelWindow {
   visible: LauncherState.open
 
   // Follow the focused monitor rather than always landing on the primary.
-  screen: {
-    const mon = Hyprland.focusedMonitor
-      || (Hyprland.focusedWorkspace ? Hyprland.focusedWorkspace.monitor : null);
-    const screens = Quickshell.screens;
-    if (mon)
-      for (let i = 0; i < screens.length; i++)
-        if (screens[i].name === mon.name) return screens[i];
-    return screens.length > 0 ? screens[0] : null;
-  }
+  screen: Monitors.focused
 
   readonly property var results: {
     const q = root.query;

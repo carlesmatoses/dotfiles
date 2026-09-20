@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "╔════════════════════════════════════════════════════════════════╗"
 echo "║              DOTFILES SETUP ORCHESTRATOR                       ║"
@@ -19,88 +19,85 @@ NC='\033[0m' # No Color
 
 # Function to print section headers
 print_section() {
-    echo ""
-    echo -e "${BLUE}╭─────────────────────────────────────╮${NC}"
-    echo -e "${BLUE}│ $1${NC}"
-    echo -e "${BLUE}╰─────────────────────────────────────╯${NC}"
+  echo ""
+  echo -e "${BLUE}╭─────────────────────────────────────╮${NC}"
+  echo -e "${BLUE}│ $1${NC}"
+  echo -e "${BLUE}╰─────────────────────────────────────╯${NC}"
 }
 
 # Function to run a script and handle errors
 run_script() {
-    local script_name=$1
-    local script_path="$SCRIPT_DIR/$script_name"
-    
-    if [ ! -f "$script_path" ]; then
-        echo -e "${RED}✗ Script not found: $script_path${NC}"
-        return 1
-    fi
-    
-    chmod +x "$script_path"
-    if bash "$script_path"; then
-        echo -e "${GREEN}✓ $script_name completed${NC}"
-        return 0
-    else
-        echo -e "${RED}✗ $script_name failed${NC}"
-        return 1
-    fi
+  local script_name=$1
+  local script_path="$SCRIPT_DIR/$script_name"
+
+  if [ ! -f "$script_path" ]; then
+    echo -e "${RED}✗ Script not found: $script_path${NC}"
+    return 1
+  fi
+
+  chmod +x "$script_path"
+  if bash "$script_path"; then
+    echo -e "${GREEN}✓ $script_name completed${NC}"
+    return 0
+  else
+    echo -e "${RED}✗ $script_name failed${NC}"
+    return 1
+  fi
 }
 
 # Step 1: Install all packages
 print_section "STEP 1: Installing Packages"
 
 scripts_to_run=(
-    "install.sh"
-    "install-hyprland-core.sh"
-    "install-rofi.sh"
-    "install-wlogout.sh"
-    "install-qt-theming.sh"
-    "install-gtk-theming.sh"
-    "install-fonts.sh"
-    "install-audio.sh"
-    "install-networking.sh"
-    "install-zsh.sh"
-    "install-starship.sh"
-    "install-neovim.sh"
-    "install-lazygit.sh"
-    "install-fzf.sh"
-    "install-kitty.sh"
-    "install-tmux.sh"
-    "install-utilities.sh"
-    "install-mako.sh"
-    "install-blender.sh"
-    "install-extras.sh"
-    "install-gpu-drivers.sh"
-    "install-pywal.sh"
-    "install-wallpapers.sh"
-    "install-zen-browser.sh"
-    "install-vscode-ms.sh"
-    "install-desktop-entries.sh"
+  "install.sh"
+  "install-hyprland-core.sh"
+  "install-quickshell.sh"
+  "install-qt-theming.sh"
+  "install-gtk-theming.sh"
+  "install-fonts.sh"
+  "install-audio.sh"
+  "install-networking.sh"
+  "install-zsh.sh"
+  "install-starship.sh"
+  "install-neovim.sh"
+  "install-lazygit.sh"
+  "install-fzf.sh"
+  "install-kitty.sh"
+  "install-tmux.sh"
+  "install-utilities.sh"
+  "install-blender.sh"
+  "install-extras.sh"
+  "install-gpu-drivers.sh"
+  "install-pywal.sh"
+  "install-wallpapers.sh"
+  "install-zen-browser.sh"
+  "install-desktop-entries.sh"
 )
 
 for script in "${scripts_to_run[@]}"; do
-    if [ -f "$SCRIPT_DIR/$script" ]; then
-        run_script "$script" || true
-    fi
+  if [ -f "$SCRIPT_DIR/$script" ]; then
+    run_script "$script" || true
+  fi
 done
 
 # Step 2: Execute wallpapers script if it exists
 print_section "STEP 2: Setting Up Wallpapers"
 
 if [ -f "$SCRIPT_DIR/.config/hypr/scripts/wallpapers.sh" ]; then
-    run_script ".config/hypr/scripts/wallpapers.sh"
+  run_script ".config/hypr/scripts/wallpapers.sh"
 else
-    echo -e "${YELLOW}⚠ wallpapers.sh not found (skipping)${NC}"
+  echo -e "${YELLOW}⚠ wallpapers.sh not found (skipping)${NC}"
 fi
 
 # Step 3: Reload Hyprland configuration
 print_section "STEP 3: Reloading Hyprland"
 
-if command -v hyprctl &> /dev/null; then
-    echo "-> Reloading Hyprland configuration..."
-    hyprctl reload
-    echo -e "${GREEN}✓ Hyprland reloaded${NC}"
+if command -v hyprctl &>/dev/null; then
+  echo "-> Reloading Hyprland configuration..."
+  hyprctl reload
+  echo -e "${GREEN}✓ Hyprland reloaded${NC}"
 else
-    echo -e "${YELLOW}⚠ Hyprland not installed or not running (skipping reload)${NC}"
+  echo -e "${YELLOW}⚠ Hyprland not installed or not running (skipping reload)${NC}"
 fi
 
 # Final summary

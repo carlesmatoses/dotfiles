@@ -10,5 +10,5 @@ Pill {
   foreground: Theme.textColor1
 
   onClicked: LauncherState.toggle()
-  onRightClicked: Sh.run("~/.config/hypr/scripts/keybindings.sh")
+  onRightClicked: KeybindsState.toggle()
 }

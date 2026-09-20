@@ -25,7 +25,6 @@ PanelWindow {
     spacing: 0
 
     AppMenu {}
-    Settings {}
     Tray {}
   }
 
@@ -49,6 +48,7 @@ PanelWindow {
     Battery {}
     Network {}
     Hardware {}
+    NotificationButton {}
     Cliphist {}
     ExitButton {}
     Clock {}
