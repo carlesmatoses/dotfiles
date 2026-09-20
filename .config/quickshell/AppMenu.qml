@@ -9,6 +9,6 @@ Pill {
   color: Theme.backgroundDark
   foreground: Theme.textColor1
 
-  onClicked: Sh.run("rofi -show drun -replace")
+  onClicked: LauncherState.toggle()
   onRightClicked: Sh.run("~/.config/hypr/scripts/keybindings.sh")
 }

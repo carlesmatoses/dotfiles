@@ -24,6 +24,10 @@ Singleton {
   property color workspaceActive: "#5D7083"  // @color2
   property color borderColor: "#68B6C5"      // @color4
 
+  // What rofi/sk_theme.rasi calls @accent / @hv - it resolves to
+  // selected-normal-background in colors-rofi-dark.rasi, which is color2.
+  property color accent: "#5D7083"           // @color2
+
   // Not themed by wal in waybar either - these are literals in style.css.
   readonly property color critical: "#f53c3c"
 
@@ -54,6 +58,7 @@ Singleton {
       root.textColor3 = w.colors.color8;
       root.iconColor = w.colors.color2;
       root.workspaceActive = w.colors.color2;
+      root.accent = w.colors.color2;
       root.borderColor = w.colors.color4;
     } catch (e) {
       console.warn("Theme: could not parse wal colors.json:", e);
