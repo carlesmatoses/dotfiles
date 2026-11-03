@@ -11,7 +11,7 @@ RowLayout {
 
   property string screenName: ""
 
-  // Mirrors the workspace->monitor bindings in hypr/monitors/carles-pc.conf.
+  // Mirrors the workspace->monitor bindings in hypr/monitors/carles-pc.lua.
   readonly property var workspaceIds: screenName === "DP-1"
     ? [6, 7, 8, 9, 10]
     : [1, 2, 3, 4, 5]
@@ -68,7 +68,7 @@ RowLayout {
         anchors.fill: parent
         hoverEnabled: true
         cursorShape: Qt.PointingHandCursor
-        onClicked: Hyprland.dispatch("workspace " + ws.modelData)
+        onClicked: Hyprland.dispatch("hl.dsp.focus({ workspace = " + ws.modelData + " })")
       }
     }
   }

@@ -37,6 +37,10 @@ echo "Hyprlock background also updated to match!"
 # set colors with pywal
 wal -i "$WALLPAPER" -n
 
+# Hyprland loads its border colors from ~/.cache/wal/hyprland.lua when the config
+# is evaluated, and doesn't watch that file, so reload to pick up the new ones.
+hyprctl reload
+
 # Quickshell reads ~/.cache/wal/colors.json through a watched FileView, so the
 # bar, launcher, notifications and wallpaper picker recolor on their own - no
 # restart needed. (Waybar used to be restarted here; it is no longer the bar,

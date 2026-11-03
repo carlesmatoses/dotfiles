@@ -43,8 +43,8 @@ ShellRoot {
   // Replaces .config/hypr/scripts/keybindings.sh.
   Keybinds {}
 
-  // Bound in hypr/configs/keybindings.conf as:
-  //   bind = $mainMod, space, global, quickshell:launcher
+  // Bound in hypr/configs/keybindings.lua as:
+  //   bind(mainMod .. " + space", hl.dsp.global("quickshell:launcher"), ...)
   GlobalShortcut {
     appid: "quickshell"
     name: "launcher"
@@ -52,7 +52,7 @@ ShellRoot {
     onPressed: LauncherState.toggle()
   }
 
-  // Bound as: bind = $mainMod, P, global, quickshell:powermenu
+  // Bound as: bind(mainMod .. " + P", hl.dsp.global("quickshell:powermenu"), ...)
   GlobalShortcut {
     appid: "quickshell"
     name: "powermenu"
@@ -60,7 +60,7 @@ ShellRoot {
     onPressed: PowerMenuState.toggle()
   }
 
-  // Bound as: bind = $mainMod, W, global, quickshell:wallpapers
+  // Bound as: bind(mainMod .. " + W", hl.dsp.global("quickshell:wallpapers"), ...)
   GlobalShortcut {
     appid: "quickshell"
     name: "wallpapers"
@@ -68,7 +68,7 @@ ShellRoot {
     onPressed: WallpaperState.toggle()
   }
 
-  // Bound as: bind = $mainMod, comma, global, quickshell:emoji
+  // Bound as: bind(mainMod .. " + comma", hl.dsp.global("quickshell:emoji"), ...)
   GlobalShortcut {
     appid: "quickshell"
     name: "emoji"
@@ -76,7 +76,7 @@ ShellRoot {
     onPressed: EmojiState.toggle()
   }
 
-  // Bound as: bind = $mainMod, period, global, quickshell:keybinds
+  // Bound as: bind(mainMod .. " + period", hl.dsp.global("quickshell:keybinds"), ...)
   GlobalShortcut {
     appid: "quickshell"
     name: "keybinds"

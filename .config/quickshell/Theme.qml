@@ -37,8 +37,8 @@ Singleton {
   property string wallpaper: ""
 
   // Bar chip translucency. 1.0 = opaque (what waybar did), 0.75 = 25%
-  // transparent. Pairs with the `namespace quickshell` blur layerrule in
-  // hyprland.conf, without which this just shows the raw wallpaper.
+  // transparent. Pairs with the `quickshell` blur layer rule in
+  // hyprland.lua, without which this just shows the raw wallpaper.
   readonly property real surfaceAlpha: 0.75
 
   // Overlay dialogs (launcher, emoji, keybinds, wallpaper picker,

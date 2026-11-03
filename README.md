@@ -20,7 +20,7 @@ chmod +x setup.sh
 Each script installs its package(s) **and** links its own configuration from this repo — there's no separate symlink step.
 
 - **`install.sh`** - System setup and Paru installation
-- **`install-hyprland-core.sh`** - Hyprland, Hyprpaper, Hyprlock (links `.config/hypr` and resolves the per-machine `monitors/monitors.conf` and `keyboard/keyboards.conf`)
+- **`install-hyprland-core.sh`** - Hyprland, Hyprpaper, Hyprlock (links `.config/hypr`; `hyprland.lua` picks the per-machine `monitors/<hostname>.lua` and `keyboard/<hostname>.lua`)
 - **`install-qt-theming.sh`** - Kvantum, Qt5/Qt6 tools, Wayland support, kdeglobals
 - **`install-gtk-theming.sh`** - GTK 3/4 theming config
 - **`install-fonts.sh`** - JetBrains Mono Nerd Font
@@ -41,7 +41,7 @@ Each script installs its package(s) **and** links its own configuration from thi
 - **`install-wallpapers.sh`** - Downloads the wallpaper set used by `wallpapers.sh`
 - **`install-zen-browser.sh`** - Zen browser (privacy-focused)
 - **`install-desktop-entries.sh`** - Links custom `.desktop` launchers (7z, Calendar, Gmail, Revolut)
-- **`install-quickshell.sh`** - Quickshell: status bar, app launcher, notification daemon, power menu, wallpaper picker, emoji picker and keybinds cheatsheet (links `.config/quickshell`, Pywal themed; started via `exec-once = qs` in Hyprland). Also removes dunst/mako, which would otherwise claim `org.freedesktop.Notifications` before Quickshell can.
+- **`install-quickshell.sh`** - Quickshell: status bar, app launcher, notification daemon, power menu, wallpaper picker, emoji picker and keybinds cheatsheet (links `.config/quickshell`, Pywal themed; started from `hyprland.lua`). Also removes dunst/mako, which would otherwise claim `org.freedesktop.Notifications` before Quickshell can.
 
 ### Configuration
 - **`.config/hypr/scripts/wallpapers.sh`** - Picks a random wallpaper (or applies one passed as an argument), points hyprlock at it, and regenerates the Pywal color scheme (`SUPER+SHIFT+W`). Quickshell draws the wallpaper itself from `colors.json` (`.config/quickshell/Wallpaper.qml`)

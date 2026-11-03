@@ -6,14 +6,12 @@ import QtQuick
 // Replaces .config/hypr/scripts/keybindings.sh (Super+. and the Apps pill
 // right-click), which piped an awk-formatted list into `rofi -dmenu`.
 //
-// Same source and the same transformation: read keybindings.conf, keep the
-// `bind*` lines, show $mainMod as SUPER, split into keys and action. The
-// script's \r-joined two-line rofi rows become proper columns here.
+// Lists the live binds from `hyprctl binds -j`, including the per-machine ones
+// in hypr/monitors/. The Lua config's dispatchers are opaque in that output, so
+// the action column shows the desc each bind sets. The script's \r-joined
+// two-line rofi rows become proper columns here.
 PanelWindow {
   id: root
-
-  readonly property string configPath:
-    "/home/carles/.config/hypr/configs/keybindings.conf"
 
   property string query: ""
   property var entries: []
@@ -35,44 +33,39 @@ PanelWindow {
   color: Qt.rgba(0, 0, 0, Theme.scrimAlpha)
   visible: KeybindsState.open
 
-  FileView {
-    id: file
-    path: root.configPath
-    watchChanges: true
-    onFileChanged: reload()
-    onLoaded: root.parse(text())
+  Process {
+    id: bindsProc
+    running: true
+    command: ["hyprctl", "binds", "-j"]
+
+    stdout: StdioCollector {
+      onStreamFinished: {
+        try {
+          root.parse(JSON.parse(this.text));
+        } catch (e) {
+          root.entries = [];
+        }
+      }
+    }
   }
 
-  function parse(raw) {
+  // Hyprland's modifier bits, in the order they read best in a key combo.
+  readonly property var modNames: [
+    [64, "SUPER"], [4, "CTRL"], [8, "ALT"], [1, "SHIFT"]
+  ]
+
+  function parse(binds) {
     const out = [];
-    const lines = raw.split("\n");
 
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i].trim();
-      // bind, bindm, bindel, bindl ... all start with "bind".
-      if (line.indexOf("bind") !== 0) continue;
-
-      const eq = line.indexOf("=");
-      if (eq < 0) continue;
-
-      // Strip an inline trailing comment, as the script's -F'[=#]' did.
-      let body = line.slice(eq + 1);
-      const hash = body.indexOf("#");
-      if (hash >= 0) body = body.slice(0, hash);
-
-      body = body.replace(/\$mainMod/g, "SUPER").trim();
-
-      // "MODS, KEY, dispatcher, args"
-      const parts = body.split(",");
-      if (parts.length < 2) continue;
-
-      const mods = parts[0].trim();
-      const key = parts[1].trim();
-      const action = parts.slice(2).join(",").trim();
+    for (let i = 0; i < binds.length; i++) {
+      const parts = [];
+      for (let m = 0; m < modNames.length; m++)
+        if (binds[i].modmask & modNames[m][0]) parts.push(modNames[m][1]);
+      parts.push(binds[i].key);
 
       out.push({
-        keys: mods === "" ? key : mods + " + " + key,
-        action: action
+        keys: parts.join(" + "),
+        action: binds[i].description
       });
     }
     root.entries = out;
@@ -95,7 +88,7 @@ PanelWindow {
     if (visible) {
       root.query = "";
       input.text = "";
-      file.reload();
+      bindsProc.running = true;
       input.forceActiveFocus();
     }
   }
@@ -251,7 +244,7 @@ PanelWindow {
     Text {
       anchors.centerIn: list
       visible: root.results.length === 0
-      text: root.entries.length === 0 ? "Could not read keybindings.conf" : "No matches"
+      text: root.entries.length === 0 ? "Could not read binds from hyprctl" : "No matches"
       color: Theme.textColor3
       font.family: Theme.fontFamily
       font.pixelSize: 14

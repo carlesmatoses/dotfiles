@@ -5,7 +5,7 @@
 WS1=$1
 WS2=$2
 
-hyprctl dispatch workspace $WS1
-hyprctl dispatch focusmonitor 1
-hyprctl dispatch workspace $WS2
-hyprctl dispatch focusmonitor 0
+hyprctl dispatch "hl.dsp.focus({ workspace = $WS1 })"
+hyprctl dispatch "hl.dsp.focus({ monitor = 1 })"
+hyprctl dispatch "hl.dsp.focus({ workspace = $WS2 })"
+hyprctl dispatch "hl.dsp.focus({ monitor = 0 })"

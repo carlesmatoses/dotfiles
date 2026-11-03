@@ -15,23 +15,4 @@ echo "-> Linking Hyprland configuration..."
 rm -rf ~/.config/hypr
 ln -sf ~/github/dotfiles/.config/hypr ~/.config/hypr
 
-# Resolve this machine's monitor config by hostname (falls back to carles-lpt's auto-detect config)
-MONITORS_DIR=~/.config/hypr/monitors
-DEVICE=$(cat /etc/hostname)
-if [ -f "$MONITORS_DIR/$DEVICE.conf" ]; then
-  ln -sf "$MONITORS_DIR/$DEVICE.conf" "$MONITORS_DIR/monitors.conf"
-else
-  echo "⚠ No monitor config found for device '$DEVICE', falling back to carles-lpt.conf"
-  ln -sf "$MONITORS_DIR/carles-lpt.conf" "$MONITORS_DIR/monitors.conf"
-fi
-
-# Resolve this machine's keyboard layout by hostname (falls back to carles-lpt's layout)
-KEYBOARD_DIR=~/.config/hypr/keyboard
-if [ -f "$KEYBOARD_DIR/$DEVICE.conf" ]; then
-  ln -sf "$KEYBOARD_DIR/$DEVICE.conf" "$KEYBOARD_DIR/keyboards.conf"
-else
-  echo "⚠ No keyboard config found for device '$DEVICE', falling back to carles-lpt.conf"
-  ln -sf "$KEYBOARD_DIR/carles-lpt.conf" "$KEYBOARD_DIR/keyboards.conf"
-fi
-
 echo "✅ Hyprland core components installed successfully!"

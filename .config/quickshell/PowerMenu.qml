@@ -34,7 +34,7 @@ PanelWindow {
   WlrLayershell.namespace: "quickshell-powermenu"
 
   // wlogout drew a 50% black wash over a blurred wallpaper; the blur comes
-  // from the layerrule in hyprland.conf, this is the wash.
+  // from the layer rule in hyprland.lua, this is the wash.
   color: Qt.rgba(0, 0, 0, Theme.scrimAlpha)
   visible: PowerMenuState.open
 

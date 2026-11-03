@@ -32,4 +32,4 @@ if systemctl --user list-unit-files dunst.service >/dev/null 2>&1; then
 fi
 
 echo "✅ Quickshell installed successfully!"
-echo "   Started via 'exec-once = qs' in .config/hypr/hyprland.conf"
+echo "   Started via hl.exec_cmd("qs") in .config/hypr/hyprland.lua"

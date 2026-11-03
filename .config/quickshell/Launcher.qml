@@ -63,8 +63,8 @@ PanelWindow {
   // Selection must never point past the end of a shrinking result list.
   onResultsChanged: if (root.selected >= results.length) root.selected = 0
 
-  // Matches `terminal: "kitty"` in rofi/config.rasi and $terminal in
-  // hypr/hyprland.conf.
+  // Matches `terminal: "kitty"` in rofi/config.rasi and terminal in
+  // hypr/configs/keybindings.lua.
   readonly property string terminal: "kitty"
 
   function activate() {
